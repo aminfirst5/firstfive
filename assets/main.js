@@ -134,14 +134,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     5. FORMSPREE FORM
+     5. FORMWARD FORM
      ======================================================= */
 
   const forms = document.querySelectorAll("[data-form]");
 
   forms.forEach((form) => {
 
-    const endpoint = window.FFY_FORM_ENDPOINT;
+    const endpoint = window.FFY_FORM_ENDPOINT || "";
 
     const submitButton = form.querySelector(
       'button[type="submit"], input[type="submit"]'
@@ -149,18 +149,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const statusMessage = form.querySelector(".form-msg");
 
+    const unavailableMessage = document.getElementById(
+      "form-unavailable"
+    );
+
+
     /*
-     * If Formspree has not yet been configured,
-     * don't leave a broken form visible.
+     * Lomake näytetään vain, jos Formward-endpoint
+     * on määritelty oikein.
      */
 
-    if (
-      !endpoint ||
-      endpoint === "LISAA_ENDPOINT_TAHAN" ||
-      !endpoint.startsWith("https://formspree.io/")
-    ) {
+    const configured =
+      endpoint &&
+      endpoint !== "LISAA_ENDPOINT_TAHAN" &&
+      endpoint !== "#";
+
+    const allowedEndpoint =
+      endpoint.startsWith(
+        "https://forms.formward.eu/"
+      );
+
+
+    if (!configured || !allowedEndpoint) {
       form.hidden = true;
+
+      if (unavailableMessage) {
+        unavailableMessage.hidden = false;
+      }
+
       return;
+    }
+
+
+    form.hidden = false;
+
+    if (unavailableMessage) {
+      unavailableMessage.hidden = true;
     }
 
 
@@ -169,16 +193,22 @@ document.addEventListener("DOMContentLoaded", () => {
        ----------------------------------------------------- */
 
     const getErrorElement = (field) => {
-      const describedBy = field.getAttribute("aria-describedby");
+      const describedBy =
+        field.getAttribute("aria-describedby");
 
       if (!describedBy) return null;
 
-      const ids = describedBy.split(/\s+/);
+      const ids =
+        describedBy.split(/\s+/);
 
       for (const id of ids) {
-        const element = document.getElementById(id);
+        const element =
+          document.getElementById(id);
 
-        if (element && element.classList.contains("field-error")) {
+        if (
+          element &&
+          element.classList.contains("field-error")
+        ) {
           return element;
         }
       }
@@ -190,7 +220,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const clearFieldError = (field) => {
       field.removeAttribute("aria-invalid");
 
-      const errorElement = getErrorElement(field);
+      const errorElement =
+        getErrorElement(field);
 
       if (errorElement) {
         errorElement.textContent = "";
@@ -199,23 +230,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const setFieldError = (field, message) => {
-      field.setAttribute("aria-invalid", "true");
+      field.setAttribute(
+        "aria-invalid",
+        "true"
+      );
 
-      const errorElement = getErrorElement(field);
+      const errorElement =
+        getErrorElement(field);
 
       if (errorElement) {
-        errorElement.textContent = message;
+        errorElement.textContent =
+          message;
       }
     };
 
 
     const validateField = (field) => {
+
       clearFieldError(field);
 
-      if (field.disabled) return true;
+      if (field.disabled) {
+        return true;
+      }
 
-      if (field.type === "checkbox" && field.required) {
+
+      /* Checkbox */
+
+      if (
+        field.type === "checkbox" &&
+        field.required
+      ) {
+
         if (!field.checked) {
+
           setFieldError(
             field,
             "Hyväksy tämä kohta ennen viestin lähettämistä."
@@ -228,7 +275,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
+      /* Empty required field */
+
       if (field.validity.valueMissing) {
+
         setFieldError(
           field,
           "Täytä tämä kenttä."
@@ -238,24 +288,34 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
+      /* Invalid email etc. */
+
       if (field.validity.typeMismatch) {
+
         if (field.type === "email") {
+
           setFieldError(
             field,
             "Tarkista sähköpostiosoite."
           );
+
         } else {
+
           setFieldError(
             field,
             "Tarkista kentän sisältö."
           );
+
         }
 
         return false;
       }
 
 
+      /* Too short */
+
       if (field.validity.tooShort) {
+
         setFieldError(
           field,
           `Kirjoita vähintään ${field.minLength} merkkiä.`
@@ -265,7 +325,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
+      /* Too long */
+
       if (field.validity.tooLong) {
+
         setFieldError(
           field,
           `Kirjoita enintään ${field.maxLength} merkkiä.`
@@ -275,7 +338,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
 
+      /* Pattern mismatch */
+
       if (field.validity.patternMismatch) {
+
         setFieldError(
           field,
           "Tarkista kentän sisältö."
@@ -290,25 +356,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* -----------------------------------------------------
-       Clear errors when user fixes a field
+       Fields
        ----------------------------------------------------- */
 
     const fields = form.querySelectorAll(
-      "input:not(.hp), textarea, select"
+      "input:not(.hp):not([type='hidden']), textarea, select"
     );
 
+
+    /* -----------------------------------------------------
+       Clear errors while user fixes a field
+       ----------------------------------------------------- */
+
     fields.forEach((field) => {
+
       const eventName =
         field.type === "checkbox" ||
         field.tagName === "SELECT"
           ? "change"
           : "input";
 
-      field.addEventListener(eventName, () => {
-        if (field.getAttribute("aria-invalid") === "true") {
-          validateField(field);
+
+      field.addEventListener(
+        eventName,
+        () => {
+
+          if (
+            field.getAttribute("aria-invalid") === "true"
+          ) {
+            validateField(field);
+          }
+
         }
-      });
+      );
+
     });
 
 
@@ -316,111 +397,68 @@ document.addEventListener("DOMContentLoaded", () => {
        Submission
        ----------------------------------------------------- */
 
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
+    form.addEventListener(
+      "submit",
+      async (event) => {
 
-      if (statusMessage) {
-        statusMessage.textContent = "";
-      }
-
-
-      /*
-       * Honeypot.
-       * Bots often fill hidden fields.
-       */
-
-      const honeypot = form.querySelector(".hp");
-
-      if (honeypot && honeypot.value.trim() !== "") {
-        return;
-      }
+        event.preventDefault();
 
 
-      /*
-       * Validate every field.
-       */
-
-      let formIsValid = true;
-      let firstInvalidField = null;
-
-      fields.forEach((field) => {
-        const valid = validateField(field);
-
-        if (!valid) {
-          formIsValid = false;
-
-          if (!firstInvalidField) {
-            firstInvalidField = field;
-          }
-        }
-      });
-
-
-      if (!formIsValid) {
         if (statusMessage) {
-          statusMessage.textContent =
-            "Tarkista lomakkeessa olevat tiedot.";
+          statusMessage.textContent = "";
         }
-
-        if (firstInvalidField) {
-          firstInvalidField.focus();
-        }
-
-        return;
-      }
-
-
-      /*
-       * Loading state.
-       */
-
-      const originalButtonText = submitButton
-        ? submitButton.textContent
-        : "";
-
-      if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.setAttribute("aria-disabled", "true");
-        submitButton.textContent = "Lähetetään…";
-      }
-
-      if (statusMessage) {
-        statusMessage.textContent = "Lähetetään viestiä…";
-      }
-
-
-      try {
-
-        const formData = new FormData(form);
-
-        const response = await fetch(endpoint, {
-          method: "POST",
-          body: formData,
-          headers: {
-            Accept: "application/json"
-          }
-        });
 
 
         /* -------------------------------------------------
-           SUCCESS
+           Honeypot
            ------------------------------------------------- */
 
-        if (response.ok) {
+        const honeypot =
+          form.querySelector(".hp");
 
-          form.reset();
+        if (
+          honeypot &&
+          honeypot.value.trim() !== ""
+        ) {
+          return;
+        }
 
-          fields.forEach((field) => {
-            clearFieldError(field);
-          });
 
-          const successMessage =
-            form.dataset.success ||
-            "Kiitos. Viestisi on lähetetty.";
+        /* -------------------------------------------------
+           Validate fields
+           ------------------------------------------------- */
+
+        let formIsValid = true;
+        let firstInvalidField = null;
+
+
+        fields.forEach((field) => {
+
+          const valid =
+            validateField(field);
+
+          if (!valid) {
+
+            formIsValid = false;
+
+            if (!firstInvalidField) {
+              firstInvalidField = field;
+            }
+
+          }
+
+        });
+
+
+        if (!formIsValid) {
 
           if (statusMessage) {
-            statusMessage.textContent = successMessage;
-            statusMessage.focus?.();
+            statusMessage.textContent =
+              "Tarkista lomakkeessa olevat tiedot.";
+          }
+
+          if (firstInvalidField) {
+            firstInvalidField.focus();
           }
 
           return;
@@ -428,66 +466,193 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /* -------------------------------------------------
-           FORMSPREE VALIDATION ERROR
+           Loading state
            ------------------------------------------------- */
 
-        let data = null;
-
-        try {
-          data = await response.json();
-        } catch (error) {
-          data = null;
-        }
+        const originalButtonText =
+          submitButton
+            ? submitButton.textContent
+            : "";
 
 
-        if (data && Array.isArray(data.errors)) {
+        if (submitButton) {
 
-          const messages = data.errors
-            .map((error) => error.message)
-            .filter(Boolean);
+          submitButton.disabled = true;
 
-          if (statusMessage) {
-            statusMessage.textContent =
-              messages.length > 0
-                ? messages.join(" ")
-                : "Viestin lähettäminen ei onnistunut. Tarkista tiedot ja yritä uudelleen.";
-          }
+          submitButton.setAttribute(
+            "aria-disabled",
+            "true"
+          );
 
-        } else {
-
-          if (statusMessage) {
-            statusMessage.textContent =
-              "Viestin lähettäminen ei onnistunut. Yritä hetken kuluttua uudelleen.";
-          }
+          submitButton.textContent =
+            "Lähetetään…";
 
         }
 
-      } catch (error) {
-
-        /*
-         * Network failure, offline user, DNS failure etc.
-         */
 
         if (statusMessage) {
           statusMessage.textContent =
-            "Yhteys katkesi eikä viestiä voitu lähettää. Tarkista verkkoyhteys ja yritä uudelleen.";
+            "Lähetetään viestiä…";
         }
 
-      } finally {
+
+        /* -------------------------------------------------
+           FormData
+           ------------------------------------------------- */
+
+        const formData =
+          new FormData(form);
+
 
         /*
-         * Restore button.
+         * Varmistetaan, että Formward saa lomakkeen nimen.
          */
 
-        if (submitButton) {
-          submitButton.disabled = false;
-          submitButton.removeAttribute("aria-disabled");
-          submitButton.textContent = originalButtonText;
+        if (
+          !formData.has("_lomake")
+        ) {
+          formData.append(
+            "_lomake",
+            form.dataset.form || "yhteys"
+          );
+        }
+
+
+        try {
+
+          /* -----------------------------------------------
+             Send to Formward
+             ----------------------------------------------- */
+
+          const response =
+            await fetch(
+              endpoint,
+              {
+                method: "POST",
+
+                body: formData,
+
+                headers: {
+                  Accept:
+                    "application/json"
+                }
+              }
+            );
+
+
+          /* -----------------------------------------------
+             Success
+             ----------------------------------------------- */
+
+          if (response.ok) {
+
+            form.reset();
+
+
+            fields.forEach((field) => {
+              clearFieldError(field);
+            });
+
+
+            const successMessage =
+              form.dataset.success ||
+              "Kiitos. Viestisi on lähetetty.";
+
+
+            if (statusMessage) {
+              statusMessage.textContent =
+                successMessage;
+            }
+
+
+            return;
+          }
+
+
+          /* -----------------------------------------------
+             Server error
+             ----------------------------------------------- */
+
+          let responseData = null;
+
+          try {
+            responseData =
+              await response.json();
+          } catch (error) {
+            responseData = null;
+          }
+
+
+          /*
+           * Formwardin mahdollinen virheviesti.
+           * Emme oleta tiettyä response-rakennetta.
+           */
+
+          let serverMessage = "";
+
+
+          if (
+            responseData &&
+            typeof responseData.message === "string"
+          ) {
+            serverMessage =
+              responseData.message;
+          }
+
+
+          if (statusMessage) {
+
+            statusMessage.textContent =
+              serverMessage ||
+              "Viestin lähettäminen ei onnistunut. Tarkista tiedot ja yritä uudelleen.";
+
+          }
+
+
+        } catch (error) {
+
+          /* -----------------------------------------------
+             Network failure
+             ----------------------------------------------- */
+
+          console.error(
+            "Formward submission failed:",
+            error
+          );
+
+
+          if (statusMessage) {
+
+            statusMessage.textContent =
+              "Yhteys katkesi eikä viestiä voitu lähettää. Tarkista verkkoyhteys ja yritä uudelleen.";
+
+          }
+
+
+        } finally {
+
+          /* -----------------------------------------------
+             Restore button
+             ----------------------------------------------- */
+
+          if (submitButton) {
+
+            submitButton.disabled =
+              false;
+
+            submitButton.removeAttribute(
+              "aria-disabled"
+            );
+
+            submitButton.textContent =
+              originalButtonText;
+
+          }
+
         }
 
       }
-
-    });
+    );
 
   });
 
@@ -496,22 +661,28 @@ document.addEventListener("DOMContentLoaded", () => {
      6. EXTERNAL LINKS
      ======================================================= */
 
-  document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+  document
+    .querySelectorAll(
+      'a[target="_blank"]'
+    )
+    .forEach((link) => {
 
-    const rel = new Set(
-      (link.getAttribute("rel") || "")
-        .split(/\s+/)
-        .filter(Boolean)
-    );
+      const rel =
+        new Set(
+          (link.getAttribute("rel") || "")
+            .split(/\s+/)
+            .filter(Boolean)
+        );
 
-    rel.add("noopener");
-    rel.add("noreferrer");
+      rel.add("noopener");
+      rel.add("noreferrer");
 
-    link.setAttribute(
-      "rel",
-      Array.from(rel).join(" ")
-    );
 
-  });
+      link.setAttribute(
+        "rel",
+        Array.from(rel).join(" ")
+      );
+
+    });
 
 });

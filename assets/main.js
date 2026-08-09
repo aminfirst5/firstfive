@@ -1,237 +1,298 @@
-/* First Five Years — main.js
-   1. Scroll reveal
-   2. Mittauspolun animaatio
-   3. Lomakkeiden käsittely
-*/
+/* =========================================================
+   FIRST FIVE YEARS
+   main.js
+
+   1. Progressive reveal
+   2. Forms
+   ========================================================= */
 
 (function () {
   'use strict';
 
-  /* =========================================================
-     1. SCROLL REVEAL
-     ========================================================= */
 
-  var reduceMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  ).matches;
+  /* =======================================================
+     1. REVEAL
+     ======================================================= */
 
-  var revealTargets = document.querySelectorAll('.reveal');
+  var reduceMotion =
+    window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+  var supportsObserver =
+    'IntersectionObserver' in window;
+
+  var targets =
+    document.querySelectorAll('.reveal');
+
+
+  /*
+   * Sisältö näkyy oletuksena.
+   * Reveal aktivoidaan vasta kun JavaScript
+   * ja IntersectionObserver ovat käytettävissä.
+   */
 
   if (
-    reduceMotion ||
-    !('IntersectionObserver' in window)
+    !reduceMotion &&
+    supportsObserver &&
+    targets.length
   ) {
-    revealTargets.forEach(function (el) {
-      el.classList.add('in');
-    });
-  } else {
-    var revealObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        rootMargin: '0px 0px -8% 0px',
-        threshold: 0.05
-      }
+
+    document.documentElement.classList.add(
+      'reveal-ready'
     );
 
-    revealTargets.forEach(function (el) {
-      revealObserver.observe(el);
-    });
-  }
 
-
-  /* =========================================================
-     2. MITTAUSPOLUN ANIMAATIO
-     ========================================================= */
-
-  var journeys = document.querySelectorAll('.journey');
-
-  if (journeys.length) {
-
-    if (
-      reduceMotion ||
-      !('IntersectionObserver' in window)
-    ) {
-      journeys.forEach(function (journey) {
-        journey.classList.add('journey-active');
-      });
-
-    } else {
-
-      var journeyObserver = new IntersectionObserver(
+    var observer =
+      new IntersectionObserver(
         function (entries) {
-          entries.forEach(function (entry) {
 
-            if (!entry.isIntersecting) {
-              return;
+          entries.forEach(
+            function (entry) {
+
+              if (entry.isIntersecting) {
+
+                entry.target.classList.add(
+                  'in'
+                );
+
+                observer.unobserve(
+                  entry.target
+                );
+
+              }
+
             }
+          );
 
-            var journey = entry.target;
-
-            /*
-              Pieni viive tekee animaatiosta rauhallisemman:
-              ensin osio tulee näkyviin, sitten polku käynnistyy.
-            */
-            window.setTimeout(function () {
-              journey.classList.add('journey-active');
-            }, 250);
-
-            journeyObserver.unobserve(journey);
-          });
         },
         {
-          rootMargin: '0px 0px -15% 0px',
-          threshold: 0.2
+          rootMargin:
+            '0px 0px -8% 0px',
+
+          threshold: 0.05
         }
       );
 
-      journeys.forEach(function (journey) {
-        journeyObserver.observe(journey);
-      });
-    }
-  }
 
-
-  /* =========================================================
-     3. FORMS
-     ========================================================= */
-
-  var endpoint = window.FFY_FORM_ENDPOINT || '';
-
-  var configured =
-    endpoint &&
-    endpoint.indexOf('LISAA_') !== 0;
-
-  var forms = document.querySelectorAll(
-    'form[data-form]'
-  );
-
-  forms.forEach(function (form) {
-
-    var msg = form.querySelector('.form-msg');
-
-    var button = form.querySelector(
-      'button[type="submit"]'
-    );
-
-
-    form.addEventListener(
-      'submit',
-      function (event) {
-
-        event.preventDefault();
-
-
-        /* ---------- selaimen validointi ---------- */
-
-        if (!form.checkValidity()) {
-          form.reportValidity();
-          return;
-        }
-
-
-        /* ---------- honeypot ---------- */
-
-        var hp = form.querySelector(
-          'input[name="_gotcha"]'
-        );
-
-        if (hp && hp.value) {
-          return;
-        }
-
-
-        /* ---------- endpoint puuttuu ---------- */
-
-        if (!configured) {
-
-          if (msg) {
-            msg.textContent =
-              'Lomake ei ole vielä käytössä. Kirjoita osoitteeseen hello@firstfive.fi';
-          }
-
-          return;
-        }
-
-
-        /* ---------- lomakedata ---------- */
-
-        var data = new FormData(form);
-
-        data.append(
-          '_lomake',
-          form.getAttribute('data-form')
-        );
-
-
-        /* ---------- loading state ---------- */
-
-        if (button) {
-          button.disabled = true;
-        }
-
-        if (msg) {
-          msg.textContent = 'Lähetetään…';
-        }
-
-
-        /* ---------- lähetys ---------- */
-
-        fetch(
-          endpoint,
-          {
-            method: 'POST',
-            body: data,
-            headers: {
-              Accept: 'application/json'
-            }
-          }
-        )
-
-          .then(function (response) {
-
-            if (!response.ok) {
-              throw new Error(
-                'HTTP status ' + response.status
-              );
-            }
-
-            form.reset();
-
-            if (msg) {
-              msg.textContent =
-                form.getAttribute('data-success') ||
-                'Kiitos. Viesti on lähetetty.';
-            }
-
-          })
-
-          .catch(function () {
-
-            if (msg) {
-              msg.textContent =
-                'Lähetys ei onnistunut. Kirjoita osoitteeseen hello@firstfive.fi';
-            }
-
-          })
-
-          .finally(function () {
-
-            if (button) {
-              button.disabled = false;
-            }
-
-          });
-
+    targets.forEach(
+      function (element) {
+        observer.observe(element);
       }
     );
 
-  });
+  } else {
+
+    targets.forEach(
+      function (element) {
+        element.classList.add('in');
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     2. FORMS
+     ======================================================= */
+
+  var endpoint =
+    window.FFY_FORM_ENDPOINT || '';
+
+  var configured =
+    endpoint &&
+    endpoint.indexOf('LISAA_') !== 0 &&
+    endpoint !== '#';
+
+
+  document
+    .querySelectorAll(
+      'form[data-form]'
+    )
+    .forEach(
+      function (form) {
+
+        var message =
+          form.querySelector(
+            '.form-msg'
+          );
+
+        var button =
+          form.querySelector(
+            'button[type="submit"]'
+          );
+
+
+        form.addEventListener(
+          'submit',
+          function (event) {
+
+            event.preventDefault();
+
+
+            /* selaimen validointi */
+
+            if (
+              !form.checkValidity()
+            ) {
+
+              form.reportValidity();
+
+              return;
+
+            }
+
+
+            /* honeypot */
+
+            var honeypot =
+              form.querySelector(
+                'input[name="_gotcha"]'
+              );
+
+            if (
+              honeypot &&
+              honeypot.value
+            ) {
+              return;
+            }
+
+
+            /* endpoint ei vielä käytössä */
+
+            if (!configured) {
+
+              if (message) {
+
+                message.textContent =
+                  'Lomake ei ole vielä käytössä. Kirjoita osoitteeseen hello@firstfive.fi';
+
+              }
+
+              return;
+
+            }
+
+
+            /* lomakedata */
+
+            var data =
+              new FormData(form);
+
+            data.append(
+              '_lomake',
+              form.getAttribute(
+                'data-form'
+              ) || 'yhteys'
+            );
+
+
+            /* loading */
+
+            if (button) {
+
+              button.disabled = true;
+
+              button.setAttribute(
+                'aria-disabled',
+                'true'
+              );
+
+            }
+
+            if (message) {
+
+              message.textContent =
+                'Lähetetään...';
+
+            }
+
+
+            /* lähetys */
+
+            fetch(
+              endpoint,
+              {
+                method: 'POST',
+
+                body: data,
+
+                headers: {
+                  Accept:
+                    'application/json'
+                }
+              }
+            )
+
+              .then(
+                function (response) {
+
+                  if (!response.ok) {
+
+                    throw new Error(
+                      'HTTP ' +
+                      response.status
+                    );
+
+                  }
+
+
+                  form.reset();
+
+
+                  if (message) {
+
+                    message.textContent =
+                      form.getAttribute(
+                        'data-success'
+                      ) ||
+                      'Kiitos. Viesti on lähetetty.';
+
+                  }
+
+                }
+              )
+
+              .catch(
+                function (error) {
+
+                  console.error(
+                    'Form submission failed:',
+                    error
+                  );
+
+
+                  if (message) {
+
+                    message.textContent =
+                      'Lähetys ei onnistunut. Kirjoita osoitteeseen hello@firstfive.fi';
+
+                  }
+
+                }
+              )
+
+              .finally(
+                function () {
+
+                  if (button) {
+
+                    button.disabled =
+                      false;
+
+                    button.removeAttribute(
+                      'aria-disabled'
+                    );
+
+                  }
+
+                }
+              );
+
+          }
+        );
+
+      }
+    );
 
 })();

@@ -9,9 +9,19 @@ document.addEventListener("DOMContentLoaded", () => {
      1. REVEAL ANIMATIONS
      ======================================================= */
 
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
   const revealElements = document.querySelectorAll(".reveal");
 
-  if ("IntersectionObserver" in window) {
+  if (
+    !reduceMotion &&
+    "IntersectionObserver" in window &&
+    revealElements.length
+  ) {
+    document.documentElement.classList.add("reveal-ready");
+
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
         entries.forEach((entry) => {
@@ -22,105 +32,56 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       },
       {
-        threshold: 0.12,
-        rootMargin: "0px 0px -40px 0px"
+        threshold: 0.1,
+        rootMargin: "0px 0px -8% 0px"
       }
     );
 
     revealElements.forEach((element) => {
       revealObserver.observe(element);
     });
+
   } else {
+
     revealElements.forEach((element) => {
       element.classList.add("in");
     });
+
   }
 
 
   /* =======================================================
-     2. DIAGRAM ANIMATION
-     ======================================================= */
-
-  const gapFigures = document.querySelectorAll(".gapfig");
-
-  if ("IntersectionObserver" in window) {
-    const gapObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          entry.target.classList.add("in");
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.25
-      }
-    );
-
-    gapFigures.forEach((figure) => {
-      gapObserver.observe(figure);
-    });
-  } else {
-    gapFigures.forEach((figure) => {
-      figure.classList.add("in");
-    });
-  }
-
-
-  /* =======================================================
-     3. JOURNEY ANIMATION
-     ======================================================= */
-
-  const journeys = document.querySelectorAll(".journey");
-
-  if ("IntersectionObserver" in window) {
-    const journeyObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          entry.target.classList.add("journey-active");
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.25
-      }
-    );
-
-    journeys.forEach((journey) => {
-      journeyObserver.observe(journey);
-    });
-  } else {
-    journeys.forEach((journey) => {
-      journey.classList.add("journey-active");
-    });
-  }
-
-
-  /* =======================================================
-     4. SMOOTH INTERNAL LINKS
+     2. SMOOTH INTERNAL LINKS
      ======================================================= */
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
+
     link.addEventListener("click", (event) => {
+
       const href = link.getAttribute("href");
 
-      if (!href || href === "#") return;
+      if (!href || href === "#") {
+        return;
+      }
 
       const target = document.querySelector(href);
 
-      if (!target) return;
+      if (!target) {
+        return;
+      }
 
       event.preventDefault();
 
       target.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "auto"
-          : "smooth",
+        behavior: reduceMotion ? "auto" : "smooth",
         block: "start"
       });
+
+      /*
+       * Vie myös näppäimistöfokuksen kohteeseen.
+       * Tämä auttaa erityisesti näppäimistö- ja
+       * ruudunlukijakäyttäjiä.
+       */
 
       if (!target.hasAttribute("tabindex")) {
         target.setAttribute("tabindex", "-1");
@@ -129,12 +90,22 @@ document.addEventListener("DOMContentLoaded", () => {
       target.focus({
         preventScroll: true
       });
+
+      /*
+       * Päivitetään URL-hash ilman uutta latausta.
+       */
+
+      if (history.pushState) {
+        history.pushState(null, "", href);
+      }
+
     });
+
   });
 
 
   /* =======================================================
-     5. FORMWARD FORM
+     3. FORMWARD FORM
      ======================================================= */
 
   const forms = document.querySelectorAll("[data-form]");
@@ -149,15 +120,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const statusMessage = form.querySelector(".form-msg");
 
-    const unavailableMessage = document.getElementById(
-      "form-unavailable"
-    );
 
-
-    /*
-     * Lomake näytetään vain, jos Formward-endpoint
-     * on määritelty oikein.
-     */
+    /* -----------------------------------------------------
+       Endpoint validation
+       ----------------------------------------------------- */
 
     const configured =
       endpoint &&
@@ -172,36 +138,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!configured || !allowedEndpoint) {
       form.hidden = true;
-
-      if (unavailableMessage) {
-        unavailableMessage.hidden = false;
-      }
-
       return;
     }
 
-
     form.hidden = false;
 
-    if (unavailableMessage) {
-      unavailableMessage.hidden = true;
-    }
 
-
-    /* -----------------------------------------------------
-       Validation helpers
-       ----------------------------------------------------- */
+    /* =====================================================
+       4. VALIDATION HELPERS
+       ===================================================== */
 
     const getErrorElement = (field) => {
+
       const describedBy =
         field.getAttribute("aria-describedby");
 
-      if (!describedBy) return null;
+      if (!describedBy) {
+        return null;
+      }
 
       const ids =
-        describedBy.split(/\s+/);
+        describedBy
+          .split(/\s+/)
+          .filter(Boolean);
 
       for (const id of ids) {
+
         const element =
           document.getElementById(id);
 
@@ -211,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ) {
           return element;
         }
+
       }
 
       return null;
@@ -218,6 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const clearFieldError = (field) => {
+
       field.removeAttribute("aria-invalid");
 
       const errorElement =
@@ -226,10 +190,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (errorElement) {
         errorElement.textContent = "";
       }
+
     };
 
 
     const setFieldError = (field, message) => {
+
       field.setAttribute(
         "aria-invalid",
         "true"
@@ -239,9 +205,9 @@ document.addEventListener("DOMContentLoaded", () => {
         getErrorElement(field);
 
       if (errorElement) {
-        errorElement.textContent =
-          message;
+        errorElement.textContent = message;
       }
+
     };
 
 
@@ -279,10 +245,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (field.validity.valueMissing) {
 
-        setFieldError(
-          field,
-          "Täytä tämä kenttä."
-        );
+        if (field.id === "c-name") {
+
+          setFieldError(
+            field,
+            "Kirjoita nimesi."
+          );
+
+        } else if (field.id === "c-email") {
+
+          setFieldError(
+            field,
+            "Kirjoita sähköpostiosoitteesi."
+          );
+
+        } else if (field.id === "c-msg") {
+
+          setFieldError(
+            field,
+            "Kirjoita viesti."
+          );
+
+        } else {
+
+          setFieldError(
+            field,
+            "Täytä tämä kenttä."
+          );
+
+        }
 
         return false;
       }
@@ -296,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           setFieldError(
             field,
-            "Tarkista sähköpostiosoite."
+            "Tarkista sähköpostiosoitteen muoto."
           );
 
         } else {
@@ -355,18 +346,14 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    /* -----------------------------------------------------
-       Fields
-       ----------------------------------------------------- */
+    /* =====================================================
+       5. FORM FIELDS
+       ===================================================== */
 
     const fields = form.querySelectorAll(
       "input:not(.hp):not([type='hidden']), textarea, select"
     );
 
-
-    /* -----------------------------------------------------
-       Clear errors while user fixes a field
-       ----------------------------------------------------- */
 
     fields.forEach((field) => {
 
@@ -390,12 +377,30 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       );
 
+
+      field.addEventListener(
+        "blur",
+        () => {
+
+          if (
+            field.required &&
+            (
+              field.value ||
+              field.type === "checkbox"
+            )
+          ) {
+            validateField(field);
+          }
+
+        }
+      );
+
     });
 
 
-    /* -----------------------------------------------------
-       Submission
-       ----------------------------------------------------- */
+    /* =====================================================
+       6. FORM SUBMISSION
+       ===================================================== */
 
     form.addEventListener(
       "submit",
@@ -409,9 +414,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* -------------------------------------------------
-           Honeypot
-           ------------------------------------------------- */
+        /* Honeypot */
 
         const honeypot =
           form.querySelector(".hp");
@@ -424,9 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* -------------------------------------------------
-           Validate fields
-           ------------------------------------------------- */
+        /* Validate all fields */
 
         let formIsValid = true;
         let firstInvalidField = null;
@@ -454,7 +455,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (statusMessage) {
             statusMessage.textContent =
-              "Tarkista lomakkeessa olevat tiedot.";
+              "Tarkista lomakkeen virheelliset kentät.";
           }
 
           if (firstInvalidField) {
@@ -465,9 +466,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* -------------------------------------------------
-           Loading state
-           ------------------------------------------------- */
+        /* Loading state */
 
         const originalButtonText =
           submitButton
@@ -496,53 +495,48 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* -------------------------------------------------
-           FormData
-           ------------------------------------------------- */
+        /* FormData */
 
         const formData =
           new FormData(form);
 
 
-        /*
-         * Varmistetaan, että Formward saa lomakkeen nimen.
-         */
+        if (!formData.has("_lomake")) {
 
-        if (
-          !formData.has("_lomake")
-        ) {
           formData.append(
             "_lomake",
             form.dataset.form || "yhteys"
           );
+
+        }
+
+
+        if (!formData.has("_subject")) {
+
+          formData.append(
+            "_subject",
+            "Uusi yhteydenotto — First Five Years"
+          );
+
         }
 
 
         try {
-
-          /* -----------------------------------------------
-             Send to Formward
-             ----------------------------------------------- */
 
           const response =
             await fetch(
               endpoint,
               {
                 method: "POST",
-
                 body: formData,
-
                 headers: {
-                  Accept:
-                    "application/json"
+                  Accept: "application/json"
                 }
               }
             );
 
 
-          /* -----------------------------------------------
-             Success
-             ----------------------------------------------- */
+          /* Success */
 
           if (response.ok) {
 
@@ -560,8 +554,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             if (statusMessage) {
+
               statusMessage.textContent =
                 successMessage;
+
+              /*
+               * Viedään statusviestiin fokus,
+               * jos sillä on tabindex.
+               */
+
+              if (
+                statusMessage.hasAttribute("tabindex")
+              ) {
+                statusMessage.focus();
+              }
+
             }
 
 
@@ -569,11 +576,10 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
 
-          /* -----------------------------------------------
-             Server error
-             ----------------------------------------------- */
+          /* Server error */
 
           let responseData = null;
+
 
           try {
             responseData =
@@ -582,11 +588,6 @@ document.addEventListener("DOMContentLoaded", () => {
             responseData = null;
           }
 
-
-          /*
-           * Formwardin mahdollinen virheviesti.
-           * Emme oleta tiettyä response-rakennetta.
-           */
 
           let serverMessage = "";
 
@@ -611,10 +612,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } catch (error) {
 
-          /* -----------------------------------------------
-             Network failure
-             ----------------------------------------------- */
-
           console.error(
             "Formward submission failed:",
             error
@@ -624,21 +621,16 @@ document.addEventListener("DOMContentLoaded", () => {
           if (statusMessage) {
 
             statusMessage.textContent =
-              "Yhteys katkesi eikä viestiä voitu lähettää. Tarkista verkkoyhteys ja yritä uudelleen.";
+              "Viestin lähettäminen ei onnistunut verkkoyhteyden vuoksi. Tarkista yhteys ja yritä uudelleen.";
 
           }
 
 
         } finally {
 
-          /* -----------------------------------------------
-             Restore button
-             ----------------------------------------------- */
-
           if (submitButton) {
 
-            submitButton.disabled =
-              false;
+            submitButton.disabled = false;
 
             submitButton.removeAttribute(
               "aria-disabled"
@@ -658,7 +650,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =======================================================
-     6. EXTERNAL LINKS
+     7. EXTERNAL LINKS
      ======================================================= */
 
   document
@@ -673,6 +665,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .split(/\s+/)
             .filter(Boolean)
         );
+
 
       rel.add("noopener");
       rel.add("noreferrer");

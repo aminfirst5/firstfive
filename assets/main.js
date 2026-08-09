@@ -1,365 +1,338 @@
-/* =========================================================
-   FIRST FIVE YEARS
-   main.js
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
-
-  /* =======================================================
-     1. REVEAL ANIMATIONS
-     ======================================================= */
 
   const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
-  const revealElements = document.querySelectorAll(".reveal");
+
+  /* =====================================================
+     REVEAL
+     ===================================================== */
+
+  const revealElements =
+    document.querySelectorAll(".reveal");
+
 
   if (
     !reduceMotion &&
     "IntersectionObserver" in window &&
     revealElements.length
   ) {
-    document.documentElement.classList.add("reveal-ready");
 
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-
-          entry.target.classList.add("in");
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -8% 0px"
-      }
+    document.documentElement.classList.add(
+      "reveal-ready"
     );
 
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
 
-  } else {
+    const observer =
+      new IntersectionObserver(
+        (entries, observerInstance) => {
+
+          entries.forEach((entry) => {
+
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            entry.target.classList.add("in");
+
+            observerInstance.unobserve(
+              entry.target
+            );
+
+          });
+
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -8% 0px"
+        }
+      );
+
 
     revealElements.forEach((element) => {
-      element.classList.add("in");
+      observer.observe(element);
     });
 
   }
 
 
-  /* =======================================================
-     2. SMOOTH INTERNAL LINKS
-     ======================================================= */
+  /* =====================================================
+     INTERNAL LINKS
+     ===================================================== */
 
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  document
+    .querySelectorAll('a[href^="#"]')
+    .forEach((link) => {
 
-    link.addEventListener("click", (event) => {
+      link.addEventListener(
+        "click",
+        (event) => {
 
-      const href = link.getAttribute("href");
+          const href =
+            link.getAttribute("href");
 
-      if (!href || href === "#") {
-        return;
-      }
+          if (!href || href === "#") {
+            return;
+          }
 
-      const target = document.querySelector(href);
 
-      if (!target) {
-        return;
-      }
+          const target =
+            document.querySelector(href);
 
-      event.preventDefault();
+          if (!target) {
+            return;
+          }
 
-      target.scrollIntoView({
-        behavior: reduceMotion ? "auto" : "smooth",
-        block: "start"
-      });
 
-      /*
-       * Vie myös näppäimistöfokuksen kohteeseen.
-       * Tämä auttaa erityisesti näppäimistö- ja
-       * ruudunlukijakäyttäjiä.
-       */
+          event.preventDefault();
 
-      if (!target.hasAttribute("tabindex")) {
-        target.setAttribute("tabindex", "-1");
-      }
 
-      target.focus({
-        preventScroll: true
-      });
+          target.scrollIntoView({
+            behavior:
+              reduceMotion
+                ? "auto"
+                : "smooth",
+            block: "start"
+          });
 
-      /*
-       * Päivitetään URL-hash ilman uutta latausta.
-       */
 
-      if (history.pushState) {
-        history.pushState(null, "", href);
-      }
+          if (
+            !target.hasAttribute("tabindex")
+          ) {
+            target.setAttribute(
+              "tabindex",
+              "-1"
+            );
+          }
+
+
+          target.focus({
+            preventScroll: true
+          });
+
+        }
+      );
 
     });
 
-  });
 
+  /* =====================================================
+     FORMWARD
+     ===================================================== */
 
-  /* =======================================================
-     3. FORMWARD FORM
-     ======================================================= */
+  const forms =
+    document.querySelectorAll(
+      "[data-form]"
+    );
 
-  const forms = document.querySelectorAll("[data-form]");
 
   forms.forEach((form) => {
 
-    const endpoint = window.FFY_FORM_ENDPOINT || "";
-
-    const submitButton = form.querySelector(
-      'button[type="submit"], input[type="submit"]'
-    );
-
-    const statusMessage = form.querySelector(".form-msg");
+    const endpoint =
+      window.FFY_FORM_ENDPOINT || "";
 
 
-    /* -----------------------------------------------------
-       Endpoint validation
-       ----------------------------------------------------- */
-
-    const configured =
-      endpoint &&
-      endpoint !== "LISAA_ENDPOINT_TAHAN" &&
-      endpoint !== "#";
-
-    const allowedEndpoint =
+    const validEndpoint =
       endpoint.startsWith(
         "https://forms.formward.eu/"
       );
 
 
-    if (!configured || !allowedEndpoint) {
+    if (!validEndpoint) {
       form.hidden = true;
       return;
     }
 
-    form.hidden = false;
 
-
-    /* =====================================================
-       4. VALIDATION HELPERS
-       ===================================================== */
-
-    const getErrorElement = (field) => {
-
-      const describedBy =
-        field.getAttribute("aria-describedby");
-
-      if (!describedBy) {
-        return null;
-      }
-
-      const ids =
-        describedBy
-          .split(/\s+/)
-          .filter(Boolean);
-
-      for (const id of ids) {
-
-        const element =
-          document.getElementById(id);
-
-        if (
-          element &&
-          element.classList.contains("field-error")
-        ) {
-          return element;
-        }
-
-      }
-
-      return null;
-    };
-
-
-    const clearFieldError = (field) => {
-
-      field.removeAttribute("aria-invalid");
-
-      const errorElement =
-        getErrorElement(field);
-
-      if (errorElement) {
-        errorElement.textContent = "";
-      }
-
-    };
-
-
-    const setFieldError = (field, message) => {
-
-      field.setAttribute(
-        "aria-invalid",
-        "true"
+    const submitButton =
+      form.querySelector(
+        'button[type="submit"]'
       );
 
-      const errorElement =
-        getErrorElement(field);
 
-      if (errorElement) {
-        errorElement.textContent = message;
-      }
-
-    };
+    const statusMessage =
+      form.querySelector(
+        ".form-msg"
+      );
 
 
-    const validateField = (field) => {
-
-      clearFieldError(field);
-
-      if (field.disabled) {
-        return true;
-      }
+    const fields =
+      form.querySelectorAll(
+        "input:not(.hp):not([type='hidden']), textarea, select"
+      );
 
 
-      /* Checkbox */
+    const getErrorElement =
+      (field) => {
 
-      if (
-        field.type === "checkbox" &&
-        field.required
-      ) {
+        const describedBy =
+          field.getAttribute(
+            "aria-describedby"
+          );
 
-        if (!field.checked) {
+        if (!describedBy) {
+          return null;
+        }
 
-          setFieldError(
+
+        const ids =
+          describedBy.split(/\s+/);
+
+
+        for (const id of ids) {
+
+          const element =
+            document.getElementById(id);
+
+          if (
+            element &&
+            element.classList.contains(
+              "field-error"
+            )
+          ) {
+            return element;
+          }
+
+        }
+
+
+        return null;
+
+      };
+
+
+    const clearError =
+      (field) => {
+
+        field.removeAttribute(
+          "aria-invalid"
+        );
+
+        const error =
+          getErrorElement(field);
+
+        if (error) {
+          error.textContent = "";
+        }
+
+      };
+
+
+    const setError =
+      (field, message) => {
+
+        field.setAttribute(
+          "aria-invalid",
+          "true"
+        );
+
+        const error =
+          getErrorElement(field);
+
+        if (error) {
+          error.textContent = message;
+        }
+
+      };
+
+
+    const validateField =
+      (field) => {
+
+        clearError(field);
+
+
+        if (field.disabled) {
+          return true;
+        }
+
+
+        if (
+          field.type === "checkbox" &&
+          field.required &&
+          !field.checked
+        ) {
+
+          setError(
             field,
             "Hyväksy tämä kohta ennen viestin lähettämistä."
           );
 
           return false;
-        }
-
-        return true;
-      }
-
-
-      /* Empty required field */
-
-      if (field.validity.valueMissing) {
-
-        if (field.id === "c-name") {
-
-          setFieldError(
-            field,
-            "Kirjoita nimesi."
-          );
-
-        } else if (field.id === "c-email") {
-
-          setFieldError(
-            field,
-            "Kirjoita sähköpostiosoitteesi."
-          );
-
-        } else if (field.id === "c-msg") {
-
-          setFieldError(
-            field,
-            "Kirjoita viesti."
-          );
-
-        } else {
-
-          setFieldError(
-            field,
-            "Täytä tämä kenttä."
-          );
 
         }
 
-        return false;
-      }
+
+        if (
+          field.validity.valueMissing
+        ) {
+
+          if (
+            field.id === "c-name"
+          ) {
+
+            setError(
+              field,
+              "Kirjoita nimesi."
+            );
+
+          } else if (
+            field.id === "c-email"
+          ) {
+
+            setError(
+              field,
+              "Kirjoita sähköpostiosoitteesi."
+            );
+
+          } else if (
+            field.id === "c-msg"
+          ) {
+
+            setError(
+              field,
+              "Kirjoita viesti."
+            );
+
+          } else {
+
+            setError(
+              field,
+              "Täytä tämä kenttä."
+            );
+
+          }
 
 
-      /* Invalid email etc. */
+          return false;
 
-      if (field.validity.typeMismatch) {
+        }
 
-        if (field.type === "email") {
 
-          setFieldError(
+        if (
+          field.validity.typeMismatch
+        ) {
+
+          setError(
             field,
             "Tarkista sähköpostiosoitteen muoto."
           );
 
-        } else {
-
-          setFieldError(
-            field,
-            "Tarkista kentän sisältö."
-          );
+          return false;
 
         }
 
-        return false;
-      }
 
+        return true;
 
-      /* Too short */
-
-      if (field.validity.tooShort) {
-
-        setFieldError(
-          field,
-          `Kirjoita vähintään ${field.minLength} merkkiä.`
-        );
-
-        return false;
-      }
-
-
-      /* Too long */
-
-      if (field.validity.tooLong) {
-
-        setFieldError(
-          field,
-          `Kirjoita enintään ${field.maxLength} merkkiä.`
-        );
-
-        return false;
-      }
-
-
-      /* Pattern mismatch */
-
-      if (field.validity.patternMismatch) {
-
-        setFieldError(
-          field,
-          "Tarkista kentän sisältö."
-        );
-
-        return false;
-      }
-
-
-      return true;
-    };
-
-
-    /* =====================================================
-       5. FORM FIELDS
-       ===================================================== */
-
-    const fields = form.querySelectorAll(
-      "input:not(.hp):not([type='hidden']), textarea, select"
-    );
+      };
 
 
     fields.forEach((field) => {
 
       const eventName =
-        field.type === "checkbox" ||
-        field.tagName === "SELECT"
+        field.type === "checkbox"
           ? "change"
           : "input";
 
@@ -369,25 +342,9 @@ document.addEventListener("DOMContentLoaded", () => {
         () => {
 
           if (
-            field.getAttribute("aria-invalid") === "true"
-          ) {
-            validateField(field);
-          }
-
-        }
-      );
-
-
-      field.addEventListener(
-        "blur",
-        () => {
-
-          if (
-            field.required &&
-            (
-              field.value ||
-              field.type === "checkbox"
-            )
+            field.getAttribute(
+              "aria-invalid"
+            ) === "true"
           ) {
             validateField(field);
           }
@@ -397,10 +354,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-
-    /* =====================================================
-       6. FORM SUBMISSION
-       ===================================================== */
 
     form.addEventListener(
       "submit",
@@ -414,10 +367,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* Honeypot */
-
         const honeypot =
           form.querySelector(".hp");
+
 
         if (
           honeypot &&
@@ -427,23 +379,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* Validate all fields */
-
-        let formIsValid = true;
-        let firstInvalidField = null;
+        let valid = true;
+        let firstInvalid = null;
 
 
         fields.forEach((field) => {
 
-          const valid =
-            validateField(field);
+          if (!validateField(field)) {
 
-          if (!valid) {
+            valid = false;
 
-            formIsValid = false;
-
-            if (!firstInvalidField) {
-              firstInvalidField = field;
+            if (!firstInvalid) {
+              firstInvalid = field;
             }
 
           }
@@ -451,24 +398,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-        if (!formIsValid) {
+        if (!valid) {
 
           if (statusMessage) {
             statusMessage.textContent =
               "Tarkista lomakkeen virheelliset kentät.";
           }
 
-          if (firstInvalidField) {
-            firstInvalidField.focus();
+          if (firstInvalid) {
+            firstInvalid.focus();
           }
 
           return;
+
         }
 
 
-        /* Loading state */
-
-        const originalButtonText =
+        const originalText =
           submitButton
             ? submitButton.textContent
             : "";
@@ -477,11 +423,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (submitButton) {
 
           submitButton.disabled = true;
-
-          submitButton.setAttribute(
-            "aria-disabled",
-            "true"
-          );
 
           submitButton.textContent =
             "Lähetetään…";
@@ -495,23 +436,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* FormData */
-
         const formData =
           new FormData(form);
 
 
-        if (!formData.has("_lomake")) {
-
-          formData.append(
-            "_lomake",
-            form.dataset.form || "yhteys"
-          );
-
-        }
-
-
-        if (!formData.has("_subject")) {
+        if (
+          !formData.has("_subject")
+        ) {
 
           formData.append(
             "_subject",
@@ -530,82 +461,35 @@ document.addEventListener("DOMContentLoaded", () => {
                 method: "POST",
                 body: formData,
                 headers: {
-                  Accept: "application/json"
+                  Accept:
+                    "application/json"
                 }
               }
             );
 
 
-          /* Success */
-
-          if (response.ok) {
-
-            form.reset();
-
-
-            fields.forEach((field) => {
-              clearFieldError(field);
-            });
-
-
-            const successMessage =
-              form.dataset.success ||
-              "Kiitos. Viestisi on lähetetty.";
-
-
-            if (statusMessage) {
-
-              statusMessage.textContent =
-                successMessage;
-
-              /*
-               * Viedään statusviestiin fokus,
-               * jos sillä on tabindex.
-               */
-
-              if (
-                statusMessage.hasAttribute("tabindex")
-              ) {
-                statusMessage.focus();
-              }
-
-            }
-
-
-            return;
+          if (!response.ok) {
+            throw new Error(
+              `HTTP ${response.status}`
+            );
           }
 
 
-          /* Server error */
-
-          let responseData = null;
+          form.reset();
 
 
-          try {
-            responseData =
-              await response.json();
-          } catch (error) {
-            responseData = null;
-          }
-
-
-          let serverMessage = "";
-
-
-          if (
-            responseData &&
-            typeof responseData.message === "string"
-          ) {
-            serverMessage =
-              responseData.message;
-          }
+          fields.forEach((field) => {
+            clearError(field);
+          });
 
 
           if (statusMessage) {
 
             statusMessage.textContent =
-              serverMessage ||
-              "Viestin lähettäminen ei onnistunut. Tarkista tiedot ja yritä uudelleen.";
+              form.dataset.success ||
+              "Kiitos. Viestisi on lähetetty.";
+
+            statusMessage.focus();
 
           }
 
@@ -613,7 +497,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (error) {
 
           console.error(
-            "Formward submission failed:",
+            "Form submission failed:",
             error
           );
 
@@ -621,7 +505,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (statusMessage) {
 
             statusMessage.textContent =
-              "Viestin lähettäminen ei onnistunut verkkoyhteyden vuoksi. Tarkista yhteys ja yritä uudelleen.";
+              "Viestin lähettäminen ei onnistunut. Yritä uudelleen tai kirjoita osoitteeseen hello@firstfive.fi.";
 
           }
 
@@ -630,14 +514,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (submitButton) {
 
-            submitButton.disabled = false;
-
-            submitButton.removeAttribute(
-              "aria-disabled"
-            );
+            submitButton.disabled =
+              false;
 
             submitButton.textContent =
-              originalButtonText;
+              originalText;
 
           }
 
@@ -649,9 +530,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /* =======================================================
-     7. EXTERNAL LINKS
-     ======================================================= */
+  /* =====================================================
+     EXTERNAL LINKS
+     ===================================================== */
 
   document
     .querySelectorAll(

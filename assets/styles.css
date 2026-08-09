@@ -611,3 +611,34 @@ section + section::before {
   .field input, .field select, .field textarea { border-color: var(--ink); }
   .gapfig { border: 1px solid var(--ink); }
 }
+
+/* kitkatyypit — nimetty lista, ei laatikoita */
+.frictions {
+  margin: clamp(2rem, 5vw, 2.75rem) 0 0;
+  display: grid; gap: 1rem;
+  max-width: 46rem;
+}
+.frictions > div {
+  display: grid;
+  grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
+  gap: 0.5rem clamp(1rem, 3vw, 2rem);
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+.frictions > div:last-child { border-bottom: 0; }
+.frictions dt {
+  font-family: var(--mono); font-size: 0.78rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); padding-top: 0.2rem;
+}
+.frictions dd { margin: 0; font-size: 1.02rem; line-height: 1.5; }
+@media (max-width: 40rem) {
+  .frictions > div { grid-template-columns: 1fr; gap: 0.25rem; }
+}
+
+/* kaksi rinnakkaista pääblokkia (ehdotus, mitä tiedämme) */
+.blocks:has(.block-primary + .block-primary) {
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+.blocks .block-primary + .block-primary { max-width: none; }

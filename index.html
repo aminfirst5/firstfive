@@ -9,7 +9,7 @@
 
   <meta
     name="description"
-    content="First Five Years tukee nuoria työelämän ensimmäisinä vuosina AI-valmentajalla ja tekee näkyväksi, missä työelämään kiinnittyminen vaikeutuu."
+    content="First Five Years tukee nuoria työelämän ensimmäisinä vuosina AI-valmentajalla ja etsii tapaa tunnistaa aikaisemmin, missä työelämään kiinnittyminen vaikeutuu."
   >
 
   <link rel="canonical" href="https://firstfive.fi/">
@@ -71,6 +71,14 @@
         Havainto
       </a>
 
+      <a href="#paatoksenteko">
+        Päätöksenteko
+      </a>
+
+      <a href="#kuka">
+        Taustalla
+      </a>
+
       <a href="#yhteys">
         Yhteys
       </a>
@@ -93,32 +101,44 @@
        HERO
        ===================================================== -->
 
-  <section class="hero" aria-labelledby="hero-title">
+  <section class="hero" id="alku" aria-labelledby="hero-title">
 
-    <div class="wrap hero-grid">
+    <div class="hero__inner">
 
-      <div class="hero-copy">
+      <div class="hero__visual" aria-hidden="true">
 
-        <p class="eyebrow hero-eyebrow">
+        <img
+          src="./assets/kuvat/hero-young-person.jpg"
+          alt=""
+        >
+
+      </div>
+
+
+      <div class="hero__content">
+
+        <p class="hero__eyebrow">
           Työelämän ensimmäisiin vuosiin
         </p>
 
         <h1 id="hero-title">
-          Ensimmäiset viisi vuotta voivat ratkaista,
-          <em>jääkö ihminen työelämään.</em>
+          Ensimmäiset viisi vuotta voivat
+          <em>ratkaista</em>, löytääkö nuori
+          paikkansa työelämässä.
         </h1>
 
-        <p class="hero-lede">
-          Silti juuri silloin tukea on vähän
-          ja tietoa vielä vähemmän.
+        <p class="hero__lead">
+          Juuri silloin oma suunta, osaaminen ja paikka työelämässä rakentuvat.
+          Tukea on kuitenkin vähän, ja tieto työelämään kiinnittymisen vaikeuksista
+          syntyy usein vasta myöhemmin.
         </p>
 
         <a
-          class="scroll-cue"
+          class="hero__scroll"
           href="#miksi"
           aria-label="Siirry seuraavaan osioon"
         >
-          ↓
+          <span aria-hidden="true"></span>
         </a>
 
       </div>
@@ -147,7 +167,7 @@
 
       <h2 id="miksi-title" class="statement-title">
         Työttömyys näkyy tilastossa.
-        <em>Epävarmuus ei.</em>
+        <em>Se, mitä tapahtui ennen sitä, ei yhtä hyvin.</em>
       </h2>
 
     </div>
@@ -156,7 +176,7 @@
 
 
   <!-- =====================================================
-       NUOREN ÄÄNI
+       NUOREN NÄKÖKULMA
        ===================================================== -->
 
   <section
@@ -167,33 +187,50 @@
     <div class="wrap">
 
       <h2 id="voices-title" class="sr-only">
-        Nuorten työelämään liittyviä kysymyksiä
+        Työelämän ensimmäisiin vuosiin liittyviä kysymyksiä
       </h2>
 
       <div class="voices">
 
         <blockquote class="voice reveal">
-          <span class="quote-mark" aria-hidden="true">“</span>
+
+          <span class="quote-mark" aria-hidden="true">
+            “
+          </span>
+
           <p>
             En tiedä,
             mihin suuntaan menen.
           </p>
+
         </blockquote>
 
+
         <blockquote class="voice reveal">
-          <span class="quote-mark" aria-hidden="true">“</span>
+
+          <span class="quote-mark" aria-hidden="true">
+            “
+          </span>
+
           <p>
             En tiedä,
             missä olen hyvä.
           </p>
+
         </blockquote>
 
+
         <blockquote class="voice reveal">
-          <span class="quote-mark" aria-hidden="true">“</span>
+
+          <span class="quote-mark" aria-hidden="true">
+            “
+          </span>
+
           <p>
             En tiedä,
             mitä teen seuraavaksi.
           </p>
+
         </blockquote>
 
       </div>
@@ -204,7 +241,7 @@
 
 
   <!-- =====================================================
-       21 %
+       TYÖTTÖMYYS
        ===================================================== -->
 
   <section
@@ -218,6 +255,7 @@
         21<span>%</span>
       </div>
 
+
       <div class="number-copy reveal">
 
         <h2 id="unemployment-title">
@@ -225,8 +263,9 @@
         </h2>
 
         <p>
-          Luku kertoo lopputuloksen.
-          Se ei kerro, mitä tapahtui ennen sitä.
+          Työmarkkinatilastot kertovat tärkeän osan tilanteesta.
+          Ne eivät kuitenkaan kerro kaikkea siitä,
+          mitä tapahtuu ennen työttömyyttä tai työelämästä irtautumista.
         </p>
 
         <p class="source-line">
@@ -248,7 +287,7 @@
 
 
   <!-- =====================================================
-       RATKAISU
+       02 FIRST FIVE YEARS
        ===================================================== -->
 
   <section
@@ -258,6 +297,7 @@
   >
 
     <div class="wrap solution-grid">
+
 
       <div class="solution-copy">
 
@@ -272,33 +312,35 @@
         </h2>
 
         <p class="solution-lede">
-          First Five Years tuo AI-valmentajan
-          työelämän ensimmäisiin vuosiin.
+          AI-valmentaja tukee nuorta työelämän ensimmäisiin vuosiin
+          liittyvissä kysymyksissä.
         </p>
+
 
         <ul class="solution-list">
 
           <li>
-            Oman suunnan löytämiseen
+            Oman suunnan löytämisessä
           </li>
 
           <li>
-            Vahvuuksien tunnistamiseen
+            Vahvuuksien tunnistamisessa
           </li>
 
           <li>
-            Kehitettävien asioiden hahmottamiseen
+            Kehitettävien asioiden hahmottamisessa
           </li>
 
           <li>
-            Työnhakuun
+            Työnhaussa
           </li>
 
           <li>
-            Vaikeiden työelämän tilanteiden käsittelyyn
+            Vaikeiden työelämän tilanteiden käsittelyssä
           </li>
 
         </ul>
+
 
         <p class="ai-note">
           AI-valmentaja on tekoälypohjainen palvelu.
@@ -328,7 +370,7 @@
 
 
   <!-- =====================================================
-       03 HAVAINTO / PILOTTI
+       03 ENSIMMÄINEN PILOTTI
        ===================================================== -->
 
   <section
@@ -347,8 +389,8 @@
         </p>
 
         <h2 id="pilot-title">
-          Nuoret käyttivät valmentajaa.
-          Samat ongelmat alkoivat toistua.
+          Nuoret käyttivät AI-valmentajaa.
+          Keskusteluissa alkoivat toistua samat työelämän tilanteet.
         </h2>
 
       </div>
@@ -400,13 +442,13 @@
       <div class="pilot-copy reveal">
 
         <p>
-          AI-valmentajan kanssa käsiteltiin esimerkiksi
-          omaa suuntaa, vahvuuksia, kehitettäviä taitoja,
-          työnhakua ja vaikeita tilanteita työpaikalla.
+          AI-valmentajan kanssa käsiteltiin esimerkiksi omaa suuntaa,
+          vahvuuksia, kehitettäviä taitoja, työnhakua
+          ja vaikeita tilanteita työpaikalla.
         </p>
 
         <p>
-          Samat asiat alkoivat esiintyä eri käyttäjien keskusteluissa.
+          Samat teemat alkoivat esiintyä eri käyttäjien keskusteluissa.
           Pilotissa tunnistettiin kymmenen toistuvaa mallia.
         </p>
 
@@ -429,6 +471,7 @@
     <div class="wrap turn-grid">
 
       <div class="turn-small reveal">
+
         <p class="subhead">
           Yhdelle nuorelle
         </p>
@@ -436,11 +479,13 @@
         <p>
           se on keskustelu.
         </p>
+
       </div>
 
+
       <h2 id="turn-title" class="turn-title reveal">
-        Monelle nuorelle
-        <em>se alkaa olla ilmiö.</em>
+        Kun sama toistuu monella,
+        <em>siitä voi tulla näkyvä ilmiö.</em>
       </h2>
 
     </div>
@@ -449,7 +494,7 @@
 
 
   <!-- =====================================================
-       MITÄ SIITÄ SYNTYY
+       04 YHTEINEN NÄKYMÄ
        ===================================================== -->
 
   <section
@@ -467,8 +512,8 @@
         </p>
 
         <h2 id="insight-title">
-          Kun sama toistuu monella,
-          voimme nähdä ongelman aikaisemmin.
+          Toistuvat tilanteet voivat kertoa myös ympäristöstä,
+          jossa nuori yrittää päästä eteenpäin.
         </h2>
 
       </div>
@@ -478,20 +523,19 @@
 
         <p>
           Tarkastelun kohteena ei ole yksittäinen nuori.
-          Tarkastelemme sitä, mitä toistuu.
+          Tarkastelun kohteena ovat toistuvat ilmiöt.
         </p>
 
         <p>
-          Onko ongelma työnhaussa?
-          Palveluissa?
-          Johtamisessa?
-          Työpaikan käytännöissä?
-          Vai jossain niiden välissä?
+          Ne voivat liittyä esimerkiksi työnhakuun,
+          palveluihin, johtamiseen,
+          työpaikan käytäntöihin tai niiden välisiin siirtymiin.
         </p>
 
         <p>
-          Tavoite on tuoda työmarkkinatilastojen rinnalle
-          aikaisempi näkymä siihen,
+          Tavoitteena on selvittää,
+          voidaanko näistä muodostaa nykyisiä työmarkkinatilastoja
+          täydentävää tietoa siitä,
           missä työelämään kiinnittyminen vaikeutuu.
         </p>
 
@@ -503,7 +547,71 @@
 
 
   <!-- =====================================================
-       SLUSH
+       05 PÄÄTÖKSENTEON NÄKYMÄ
+       ===================================================== -->
+
+  <section
+    class="national-section"
+    id="paatoksenteko"
+    aria-labelledby="national-title"
+  >
+
+    <div class="wrap national-grid">
+
+      <div class="national-copy reveal">
+
+        <p class="eyebrow">
+          <span class="idx">05</span>
+          Päätöksenteon näkymä
+        </p>
+
+        <h2 id="national-title">
+          Mitä jos näkisimme ongelman ennen kuin se näkyy työttömyystilastossa?
+        </h2>
+
+      </div>
+
+
+      <div class="national-body reveal">
+
+        <p class="national-lede">
+          Suomessa tiedämme paljon lopputuloksista.
+          Vähemmän siitä, mitä tapahtuu ennen niitä.
+        </p>
+
+        <p>
+          Tiedämme, kuinka moni nuori on työssä ja kuinka moni työttömänä.
+          Paljon vähemmän tiedämme siitä, missä vaiheessa suunta katoaa,
+          työnhaku pysähtyy tai ensimmäisissä työpaikoissa syntyy vaikeuksia.
+        </p>
+
+        <p>
+          First Five Yearsin tavoitteena on rakentaa aikaisempi näkymä
+          näihin tilanteisiin.
+        </p>
+
+        <p>
+          AI-valmentaja tukee nuorta hänen omassa tilanteessaan.
+          Samalla keskusteluista voidaan tunnistaa toistuvia ilmiöitä,
+          jotka voivat kertoa laajemmista työelämään kiinnittymisen ongelmista.
+        </p>
+
+        <p>
+          Kun sama ilmiö toistuu riittävän monessa keskustelussa,
+          kyse ei välttämättä ole enää vain yksittäisestä kokemuksesta.
+          Se voi olla signaali rakenteesta, palvelusta tai työelämän käytännöstä,
+          jota kannattaa tarkastella tarkemmin.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       SEURAAVA KOKEILU
        ===================================================== -->
 
   <section
@@ -516,6 +624,7 @@
       <div class="slush-number reveal">
         1 800
       </div>
+
 
       <div class="slush-copy reveal">
 
@@ -548,12 +657,12 @@
     aria-labelledby="mission-title"
   >
 
-    <div class="wrap mission-grid">
+    <div class="wrap">
 
       <div class="mission-copy reveal">
 
         <p class="eyebrow">
-          <span class="idx">05</span>
+          <span class="idx">06</span>
           Missio
         </p>
 
@@ -562,7 +671,10 @@
           työelämän ensimmäisiä vuosia yksin.
         </h2>
 
-        <a class="textlink" href="./missio.html">
+        <a
+          class="textlink"
+          href="./missio.html"
+        >
           Lue missio →
         </a>
 
@@ -574,7 +686,7 @@
 
 
   <!-- =====================================================
-       TAUSTALLA
+       07 TAUSTALLA
        ===================================================== -->
 
   <section
@@ -588,13 +700,12 @@
       <div class="section-head reveal">
 
         <p class="eyebrow">
-          <span class="idx">06</span>
+          <span class="idx">07</span>
           Taustalla
         </p>
 
         <h2 id="people-title">
-          First Five Years on Amin Hassanin
-          ja Heikki Leskisen käynnistämä aloite.
+          Työelämän, uuden sukupolven ja tekoälyn parissa tehtyä työtä.
         </h2>
 
       </div>
@@ -619,6 +730,7 @@
 
           </figure>
 
+
           <div class="founder-content">
 
             <p class="subhead">
@@ -631,9 +743,10 @@
 
             <p>
               Amin työskentelee henkilöstökokemuksen,
-              osaamisen kehittämisen ja tekoälyn parissa Goforella.
-              Hän on tehnyt vuosia työtä yhdenvertaisemman työelämän
-              ja nuorten uramahdollisuuksien parissa.
+              osaamisen kehittämisen ja tekoälyn parissa.
+              Hän on tehnyt pitkään työtä yhdenvertaisemman työelämän
+              ja nuorten uramahdollisuuksien parissa
+              sekä osallistunut työelämästä käytävään yhteiskunnalliseen keskusteluun.
             </p>
 
           </div>
@@ -657,6 +770,7 @@
 
           </figure>
 
+
           <div class="founder-content">
 
             <p class="subhead">
@@ -670,9 +784,11 @@
             <p>
               Heikki on sarjayrittäjä ja strategiakonsultti,
               joka on keskittynyt uuden sukupolven johtamiseen
-              ja nuorten osaajien tuomiseen osaksi yritysten kehittämistä.
+              ja nuorten osaajien rooliin yritysten kehittämisessä.
               Hän on perustanut The NextGen Projectin
-              ja vetää NextGenAI-ohjelmaa.
+              ja vetää NextGenAI-ohjelmaa,
+              jossa generatiivista tekoälyä hyödynnetään
+              nuorten työelämään siirtymisen tukena.
             </p>
 
           </div>
@@ -693,10 +809,10 @@
         </h3>
 
         <p>
-          First Five Yearsin AI-valmentajan tarjoaa Adaptive Works.
+          AI-valmentajan tarjoaa Adaptive Works.
           Yhteistyössä kehitetään nuorelle tarjottavaa valmennusta
           sekä tapaa tunnistaa keskusteluista
-          laajempia työelämän ilmiöitä.
+          laajempia työelämään kiinnittymisen ilmiöitä.
         </p>
 
       </div>
@@ -707,7 +823,7 @@
 
 
   <!-- =====================================================
-       PELISÄÄNNÖT
+       08 PELISÄÄNNÖT
        ===================================================== -->
 
   <section
@@ -720,12 +836,12 @@
       <div class="section-head reveal">
 
         <p class="eyebrow">
-          <span class="idx">07</span>
+          <span class="idx">08</span>
           Pelisäännöt
         </p>
 
         <h2 id="rules-title">
-          Tuki ensin. Data vasta sen jälkeen.
+          Tuki nuorelle tulee ennen datan hyödyntämistä.
         </h2>
 
       </div>
@@ -734,38 +850,90 @@
       <div class="rules-grid">
 
         <article class="rule reveal">
-          <span class="rule-number">01</span>
+
+          <span class="rule-number">
+            01
+          </span>
+
           <h3>
             Käyttäjä tietää puhuvansa tekoälyn kanssa.
           </h3>
+
+          <p>
+            AI-valmentajaa ei esitetä ihmisenä.
+          </p>
+
         </article>
 
+
         <article class="rule reveal">
-          <span class="rule-number">02</span>
+
+          <span class="rule-number">
+            02
+          </span>
+
           <h3>
             Ihmisiä ei pisteytetä.
           </h3>
+
+          <p>
+            Palvelu ei anna työelämävalmiuspisteitä,
+            persoonallisuusluokituksia tai ennusteita työllistymisestä.
+          </p>
+
         </article>
 
+
         <article class="rule reveal">
-          <span class="rule-number">03</span>
+
+          <span class="rule-number">
+            03
+          </span>
+
           <h3>
             Yksittäisiä keskusteluja ei julkaista.
           </h3>
+
+          <p>
+            Yhteinen näkymä perustuu useista keskusteluista
+            tunnistettuihin koottuihin ilmiöihin.
+          </p>
+
         </article>
 
+
         <article class="rule reveal">
-          <span class="rule-number">04</span>
+
+          <span class="rule-number">
+            04
+          </span>
+
           <h3>
             Datan käytöstä voi vetäytyä.
           </h3>
+
+          <p>
+            Vetäytyminen ei vaikuta AI-valmentajan käyttöön.
+          </p>
+
         </article>
 
+
         <article class="rule reveal">
-          <span class="rule-number">05</span>
+
+          <span class="rule-number">
+            05
+          </span>
+
           <h3>
             Keskusteludataa ei myydä.
           </h3>
+
+          <p>
+            Käyttäjien keskusteluista ei rakenneta
+            kolmansille osapuolille myytävää aineistoa.
+          </p>
+
         </article>
 
       </div>
@@ -776,7 +944,7 @@
 
 
   <!-- =====================================================
-       YHTEYS
+       09 YHTEYS
        ===================================================== -->
 
   <section
@@ -791,7 +959,7 @@
       <div class="contact-intro reveal">
 
         <p class="eyebrow">
-          <span class="idx">08</span>
+          <span class="idx">09</span>
           Yhteys
         </p>
 
@@ -806,9 +974,11 @@
         </p>
 
         <p class="contact-email">
+
           <a href="mailto:hello@firstfive.fi">
             hello@firstfive.fi
           </a>
+
         </p>
 
       </div>
@@ -834,13 +1004,17 @@
 
           <div class="form-row">
 
+
             <div class="field">
 
               <label for="c-name">
+
                 Nimi
+
                 <span class="required-text">
                   pakollinen
                 </span>
+
               </label>
 
               <input
@@ -863,10 +1037,13 @@
             <div class="field">
 
               <label for="c-email">
+
                 Sähköposti
+
                 <span class="required-text">
                   pakollinen
                 </span>
+
               </label>
 
               <input
@@ -885,16 +1062,20 @@
 
             </div>
 
+
           </div>
 
 
           <div class="field">
 
             <label for="c-msg">
+
               Viesti
+
               <span class="required-text">
                 pakollinen
               </span>
+
             </label>
 
             <textarea
@@ -1006,6 +1187,10 @@
 
       <a href="./missio.html">
         Missio
+      </a>
+
+      <a href="#paatoksenteko">
+        Päätöksenteko
       </a>
 
       <a href="#kuka">

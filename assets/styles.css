@@ -813,6 +813,9 @@ section:not(.hero):not(.impact-section) {
   grid-column: 2;
 
   align-self: center;
+
+  margin-left:
+    clamp(4rem, 7vw, 7rem);
 }
 
 .impact-stat__label {
@@ -1201,29 +1204,6 @@ section:not(.hero):not(.impact-section) {
   color: var(--on-ink-muted);
 }
 
-
-/* =========================================================
-   MISSION BAND
-   ========================================================= */
-
-.mission-band {
-  background: var(--paper);
-}
-
-.mission-copy {
-  max-width: 50rem;
-}
-
-.mission-copy h2 {
-  max-width: 15ch;
-
-  margin-bottom: 2rem;
-
-  font-size:
-    clamp(2.5rem, 1.5rem + 3.8vw, 5rem);
-
-  line-height: 1;
-}
 
 .textlink {
   display: inline-block;
@@ -2073,6 +2053,8 @@ html.reveal-ready .reveal.in {
     grid-column: auto;
 
     max-width: 18rem;
+
+    margin-left: 0;
   }
 
   .impact-phone {

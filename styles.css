@@ -1318,7 +1318,7 @@ section:not(.hero):not(.impact-section) {
 }
 
 .rule {
-  min-height: 14rem;
+  min-height: 11rem;
 
   padding:
     clamp(1.5rem, 4vw, 2.5rem);
@@ -1341,7 +1341,7 @@ section:not(.hero):not(.impact-section) {
 .rule h3 {
   max-width: 21ch;
 
-  margin-bottom: 0.8rem;
+  margin-bottom: 0;
 }
 
 .rule:last-child {
@@ -1352,7 +1352,7 @@ section:not(.hero):not(.impact-section) {
   display: grid;
 
   grid-template-columns:
-    3rem minmax(14rem, 0.8fr) minmax(0, 1.2fr);
+    3rem minmax(0, 1fr);
 
   column-gap: clamp(1.5rem, 4vw, 3rem);
 
@@ -1380,11 +1380,11 @@ section:not(.hero):not(.impact-section) {
   display: grid;
 
   grid-template-columns:
-    minmax(22rem, 0.9fr)
-    minmax(30rem, 1.1fr);
+    minmax(30rem, 1.1fr)
+    minmax(26rem, 0.9fr);
 
   gap:
-    clamp(4rem, 8vw, 7rem);
+    clamp(3rem, 5vw, 5rem);
 
   align-items: start;
 }
@@ -1395,14 +1395,14 @@ section:not(.hero):not(.impact-section) {
 }
 
 .contact-intro {
-  max-width: 31rem;
+  max-width: 38rem;
 }
 
 .contact-intro h2 {
-  max-width: 9ch;
+  max-width: 16ch;
 
   font-size:
-    clamp(3rem, 2rem + 3vw, 4.7rem);
+    clamp(2.6rem, 2rem + 2.2vw, 4rem);
 
   line-height: 1;
 }
@@ -2114,7 +2114,7 @@ html.reveal-ready .reveal.in {
   .rule:last-child {
     grid-column: auto;
 
-    min-height: 14rem;
+    min-height: 11rem;
 
     display: block;
   }
@@ -2157,10 +2157,10 @@ html.reveal-ready .reveal.in {
   }
 
   .contact-intro h2 {
-    max-width: 10ch;
+    max-width: 16ch;
 
     font-size:
-      clamp(3rem, 11vw, 4.5rem);
+      clamp(2.6rem, 9.5vw, 4rem);
   }
 
 }
@@ -2187,7 +2187,7 @@ html.reveal-ready .reveal.in {
   }
 
   .contact-intro h2 {
-    max-width: none;
+    max-width: 16ch;
   }
 
 }

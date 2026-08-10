@@ -189,7 +189,6 @@ section:not(.hero):not(.impact-section) {
 .eyebrow,
 .subhead,
 .source-line,
-.ai-note,
 .legal {
   font-family: var(--mono);
 }
@@ -524,6 +523,42 @@ section:not(.hero):not(.impact-section) {
     rgba(243, 241, 234, 0.78);
 }
 
+.hero__data-path {
+  width: min(39rem, 52vw);
+
+  margin: 1.6rem 0 0;
+  padding: 1rem 0 0;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 0.7rem;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.14);
+
+  list-style: none;
+
+  font-family: var(--mono);
+
+  font-size: 0.68rem;
+  line-height: 1.4;
+
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+
+  color: var(--on-ink-muted);
+}
+
+.hero__data-path li:not(:last-child)::after {
+  content: "→";
+
+  margin-left: 0.7rem;
+
+  color: var(--signal-lit);
+}
+
 
 /* Hero arrow */
 
@@ -734,9 +769,8 @@ section:not(.hero):not(.impact-section) {
   display: grid;
 
   grid-template-columns:
-    minmax(0, 1.08fr)
-    minmax(13rem, 0.5fr)
-    minmax(20rem, 0.85fr);
+    minmax(0, 1.2fr)
+    minmax(16rem, 0.55fr);
 
   gap:
     clamp(2rem, 5vw, 5rem);
@@ -828,9 +862,6 @@ section:not(.hero):not(.impact-section) {
 .impact-solution {
   position: relative;
 
-  min-height:
-    clamp(37rem, 54vw, 50rem);
-
   background:
     radial-gradient(
       circle at 82% 40%,
@@ -843,9 +874,14 @@ section:not(.hero):not(.impact-section) {
 }
 
 .impact-solution__inner {
-  min-height: inherit;
+  display: grid;
 
-  display: flex;
+  grid-template-columns:
+    minmax(18rem, 0.8fr)
+    minmax(26rem, 1.2fr);
+
+  gap:
+    clamp(3rem, 7vw, 7rem);
 
   align-items: center;
 
@@ -861,9 +897,8 @@ section:not(.hero):not(.impact-section) {
 
   z-index: 4;
 
-  width: min(31rem, 44%);
-
-  padding-right: 1rem;
+  width: 100%;
+  min-width: 0;
 }
 
 .impact-solution .eyebrow {
@@ -953,78 +988,29 @@ section:not(.hero):not(.impact-section) {
   font-weight: 600;
 }
 
-.ai-note {
-  max-width: 30rem;
-
-  margin-top: 2rem;
-
-  padding-top: 1.2rem;
-
-  border-top:
-    1px solid rgba(255, 255, 255, 0.12);
-
-  font-family: var(--mono);
-
-  font-size: 0.72rem;
-  line-height: 1.55;
-
-  color: var(--on-ink-muted);
-}
-
-
-/* Angled phone */
+/* AI coach image */
 
 .impact-phone {
-  position: absolute;
+  position: relative;
 
-  top:
-    clamp(8rem, 13vw, 12rem);
-
-  right:
-    max(
-      var(--gutter),
-      calc(
-        (100vw - var(--content)) / 2
-        + var(--gutter)
-      )
-    );
-
-  z-index: 5;
-
-  width:
-    clamp(28rem, 43vw, 43rem);
+  width: 100%;
+  max-width: 44rem;
+  min-width: 0;
 
   margin: 0;
 
-  pointer-events: none;
+  overflow: visible;
+
+  border: 0;
+
+  background: transparent;
+
+  box-shadow: none;
 }
 
 .impact-phone img {
   width: 100%;
   height: auto;
-
-  filter:
-    drop-shadow(
-      0 2.6rem 3.2rem
-      rgba(0, 0, 0, 0.36)
-    );
-}
-
-.impact-phone::after {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--ink) 0%,
-      rgba(11, 14, 15, 0.35) 6%,
-      transparent 20%
-    );
-
-  pointer-events: none;
 }
 
 
@@ -1103,62 +1089,6 @@ section:not(.hero):not(.impact-section) {
 
   gap:
     clamp(2rem, 6vw, 5rem);
-}
-
-
-/* =========================================================
-   TURN
-   ========================================================= */
-
-.turn-section {
-  background: var(--ink);
-}
-
-.turn-grid {
-  display: grid;
-
-  grid-template-columns:
-    minmax(12rem, 0.5fr)
-    minmax(0, 1.5fr);
-
-  gap:
-    clamp(3rem, 8vw, 7rem);
-
-  align-items: end;
-}
-
-.turn-small {
-  color: var(--signal-lit);
-}
-
-.turn-small .subhead {
-  color: var(--signal-lit);
-}
-
-.turn-small p:last-child {
-  margin: 0;
-
-  font-family: var(--display);
-
-  font-size:
-    clamp(1.5rem, 1.2rem + 1vw, 2.2rem);
-
-  line-height: 1.25;
-}
-
-.turn-title {
-  max-width: 14ch;
-
-  font-size:
-    clamp(3rem, 1.8rem + 5vw, 6rem);
-
-  line-height: 1;
-}
-
-.turn-title em {
-  color: var(--signal-lit);
-
-  font-style: italic;
 }
 
 
@@ -1915,9 +1845,8 @@ html.reveal-ready .reveal.in {
 
   .impact-stat__inner {
     grid-template-columns:
-      minmax(0, 0.85fr)
-      minmax(13rem, 0.55fr)
-      minmax(18rem, 0.9fr);
+      minmax(0, 0.9fr)
+      minmax(15rem, 0.55fr);
   }
 
   .impact-number {
@@ -1925,15 +1854,8 @@ html.reveal-ready .reveal.in {
       clamp(7rem, 14vw, 11rem);
   }
 
-  .impact-phone {
-    right: -5rem;
-
-    width:
-      clamp(28rem, 51vw, 38rem);
-  }
-
-  .impact-solution__copy {
-    width: 48%;
+  .impact-solution__inner {
+    gap: clamp(2rem, 5vw, 4rem);
   }
 
 }
@@ -1978,7 +1900,6 @@ html.reveal-ready .reveal.in {
   }
 
 
-  .turn-grid,
   .insight-grid,
   .national-grid,
   .slush-grid,
@@ -2091,6 +2012,11 @@ html.reveal-ready .reveal.in {
     max-width: 31rem;
   }
 
+  .hero__data-path {
+    width: 100%;
+    max-width: 31rem;
+  }
+
   .hero__scroll {
     left: auto;
     right: var(--gutter);
@@ -2157,18 +2083,10 @@ html.reveal-ready .reveal.in {
 
     z-index: 4;
 
-    width:
-      min(42rem, 125vw);
+    width: 100%;
+    max-width: 100%;
 
-    margin:
-      -2.5rem
-      -17vw
-      -9rem
-      auto;
-  }
-
-  .impact-phone::after {
-    display: none;
+    margin: 0;
   }
 
   .impact-solution {
@@ -2176,11 +2094,13 @@ html.reveal-ready .reveal.in {
   }
 
   .impact-solution__inner {
-    min-height: auto;
+    display: grid;
 
-    display: block;
+    grid-template-columns: minmax(0, 1fr);
 
-    padding-top: 11rem;
+    gap: 3rem;
+
+    padding-top: 5rem;
     padding-bottom: 5rem;
   }
 
@@ -2278,13 +2198,6 @@ html.reveal-ready .reveal.in {
   .hero h1 {
     font-size:
       clamp(2.45rem, 11vw, 3.4rem);
-  }
-
-  .impact-phone {
-    width: 135vw;
-
-    margin-right: -23vw;
-    margin-bottom: -8rem;
   }
 
   .impact-solution__inner {

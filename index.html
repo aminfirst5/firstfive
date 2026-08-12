@@ -25,34 +25,40 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fi_FI">
   <meta property="og:site_name" content="First Five Years">
-  <meta property="og:title" content="First Five Years | Näkymä työelämän ensimmäisiin vuosiin">
-
+  <meta
+    property="og:title"
+    content="First Five Years | Näkymä työelämän ensimmäisiin vuosiin"
+  >
   <meta
     property="og:description"
     content="Tukea nuorelle, tietoa Suomelle. First Five Years tekee näkyväksi työelämän alkuvaiheen kitkaa ja rakentaa siitä kansallista näkymää."
   >
-
   <meta property="og:url" content="https://firstfive.fi/">
-  <meta property="og:image" content="https://firstfive.fi/assets/kuvat/hero-young-people.png">
+  <meta
+    property="og:image"
+    content="https://firstfive.fi/assets/kuvat/hero-young-people.png"
+  >
   <meta property="og:image:width" content="1536">
   <meta property="og:image:height" content="1024">
   <meta property="og:image:type" content="image/png">
-
   <meta
     property="og:image:alt"
     content="Kolme eri taustoista tulevaa nuorta katsoo Helsinkiä ja Tuomiokirkkoa ilta-auringossa."
   >
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="First Five Years | Näkymä työelämän ensimmäisiin vuosiin">
-
+  <meta
+    name="twitter:title"
+    content="First Five Years | Näkymä työelämän ensimmäisiin vuosiin"
+  >
   <meta
     name="twitter:description"
     content="Tukea nuorelle, tietoa Suomelle. First Five Years tekee näkyväksi työelämän alkuvaiheen kitkaa ja rakentaa siitä kansallista näkymää."
   >
-
-  <meta name="twitter:image" content="https://firstfive.fi/assets/kuvat/hero-young-people.png">
-
+  <meta
+    name="twitter:image"
+    content="https://firstfive.fi/assets/kuvat/hero-young-people.png"
+  >
   <meta
     name="twitter:image:alt"
     content="Kolme eri taustoista tulevaa nuorta katsoo Helsinkiä ja Tuomiokirkkoa ilta-auringossa."
@@ -105,6 +111,7 @@
   </script>
 
   <link rel="stylesheet" href="./assets/styles.css?v=20260812-7">
+  <link rel="stylesheet" href="./assets/ffy-visuals.css?v=1">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -122,6 +129,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,500&display=swap"
     >
   </noscript>
+
 </head>
 
 
@@ -241,30 +249,146 @@
         id="miksi-title"
         class="statement-title"
       >
-        Työllistyminen näkyy tilastoissa.
+        Nuoren polku on jatkumo.
         <em>
-          Työelämään kiinnittymisen alku paljon huonommin.
+          Tieto siitä ei ole.
         </em>
       </h2>
 
       <p class="statement-body">
-        Oppilaitokset, työnantajat ja rekisterit näkevät eri osia nuoren
-        matkasta. Jatkuvaa näkymää siihen, mitä tapahtuu ennen ensimmäistä
-        työpaikkaa ja ensimmäisten työvuosien aikana, ei ole.
+        Oppilaitokset, työnantajat ja rekisterit näkevät eri osia
+        matkasta. Työuran alku voi silti vaikuttaa pitkälle, ja siksi
+        juuri sen katvealue kannattaa tehdä näkyväksi.
       </p>
 
-      <p class="statement-body">
-        Työuran alku voi kantaa pitkälle. Tutkimuksessa tunnettu
-        scarring-vaikutus osoittaa, että esimerkiksi varhainen työttömyys
-        ja heikko työmarkkina-asema voivat näkyä vielä vuosien päästä.
-        Me haluamme nähdä kitkan aikaisemmin.
-      </p>
 
-      <p class="statement-body">
-        <a class="textlink" href="./missio.html">
-          Miksi työelämän alku ratkaisee enemmän kuin ensimmäisen työpaikan →
-        </a>
-      </p>
+      <!-- VISUAL 01: PUUTTUVA NÄKYMÄ -->
+
+      <div
+        class="viz arc"
+        aria-label="Työelämään siirtymisen katvealue"
+      >
+
+        <div
+          class="arc-stages"
+          aria-hidden="true"
+        >
+          <span>Opinnot</span>
+          <span>Työnhaku</span>
+          <span>Ensimmäinen työ</span>
+          <span>1–2 vuotta</span>
+          <span>3–5 vuotta</span>
+        </div>
+
+
+        <div class="arc-rows">
+
+          <div class="arc-row">
+
+            <p class="viz-label">
+              Oppilaitokset
+            </p>
+
+            <div class="arc-track">
+
+              <div
+                class="arc-bar"
+                style="grid-column: 1 / 2;"
+              ></div>
+
+            </div>
+
+            <p class="viz-caption">
+              Näkevät opiskelun ja valmistumisen.
+            </p>
+
+          </div>
+
+
+          <div class="arc-row">
+
+            <p class="viz-label">
+              Työnantajat
+            </p>
+
+            <div class="arc-track">
+
+              <div
+                class="arc-bar"
+                style="grid-column: 3 / 6;"
+              ></div>
+
+            </div>
+
+            <p class="viz-caption">
+              Näkevät oman työsuhteensa.
+            </p>
+
+          </div>
+
+
+          <div class="arc-row">
+
+            <p class="viz-label">
+              Rekisterit
+            </p>
+
+            <div class="arc-track">
+
+              <div
+                class="arc-points"
+                aria-hidden="true"
+              >
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+
+            </div>
+
+            <p class="viz-caption">
+              Kertovat esimerkiksi työllisyydestä ja työttömyydestä.
+            </p>
+
+          </div>
+
+
+          <div class="arc-row arc-row--ffy">
+
+            <p class="viz-label viz-label--signal">
+              First Five Years
+            </p>
+
+            <div class="arc-track">
+
+              <div
+                class="arc-bar arc-bar--ffy"
+                style="grid-column: 1 / 6;"
+              ></div>
+
+            </div>
+
+            <p class="viz-caption">
+              Rakentaa näkymää koko työelämän alkuun.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <p class="viz-note">
+          Tutkimuksessa tunnettu scarring-vaikutus osoittaa, että esimerkiksi
+          varhainen työttömyys ja heikko työmarkkina-asema voivat näkyä
+          vielä vuosien päästä.
+          <a class="textlink" href="./missio.html">
+            Miksi ensimmäiset vuodet ratkaisevat →
+          </a>
+        </p>
+
+      </div>
 
     </div>
 
@@ -274,74 +398,135 @@
   <!-- 02 MITÄ RAKENNAMME -->
 
   <section
-    class="impact-section"
+    class="dark-section"
     id="ratkaisu"
     aria-labelledby="solution-title"
   >
 
-    <div class="impact-solution">
+    <div class="wrap">
 
-      <div class="wrap impact-solution__inner">
+      <p class="eyebrow">
+        <span class="idx">02</span>
+        Mitä rakennamme
+      </p>
 
-        <div class="impact-solution__copy reveal">
+      <h2 id="solution-title">
+        Tuki nuorelle.
+        Kansallinen näkymä Suomelle.
+      </h2>
 
-          <p class="eyebrow">
-            <span class="idx">02</span>
-            Mitä rakennamme
+      <p class="viz-lede">
+        Sama palvelu voi auttaa yksilöä ja tehdä samalla näkyväksi
+        toistuvia työelämän ilmiöitä.
+      </p>
+
+
+      <!-- VISUAL 02: KETJU -->
+
+      <div class="viz chain">
+
+        <article class="chain-step">
+
+          <span>01</span>
+
+          <h3>
+            Tuki nuorelle
+          </h3>
+
+          <p>
+            Maksuton AI-valmentaja ennen ensimmäistä työpaikkaa
+            ja ensimmäisten työvuosien aikana.
           </p>
 
-          <h2 id="solution-title">
-            Tuki nuorelle. Kansallinen näkymä Suomelle.
-          </h2>
+        </article>
 
-          <p class="impact-solution__lede">
-            Maksuton AI&#8209;valmentaja tukee nuorta jo ennen ensimmäistä
-            työpaikkaa ja ensimmäisten työvuosien aikana. Samalla syntyy
-            uudenlaista tietoa siitä, missä työelämään kiinnittyminen
-            vahvistuu ja missä kitka alkaa kasautua.
+
+        <article class="chain-step">
+
+          <span>02</span>
+
+          <h3>
+            Kokemukset
+          </h3>
+
+          <p>
+            Kysymykset syntyvät oikeissa tilanteissa, eivät vain
+            jälkikäteen kyselyissä.
           </p>
 
-          <p class="impact-solution__lede">
-            Kun sama kokemus toistuu eri keskusteluissa, yksittäisestä
-            tilanteesta alkaa muodostua yhteinen signaali. Näistä
-            signaaleista rakennamme kestävän työelämään kiinnittymisen
-            mittaria.
+        </article>
+
+
+        <article class="chain-step chain-step--signal chain-step--turn">
+
+          <span>03</span>
+
+          <h3>
+            Signaali
+          </h3>
+
+          <p>
+            Kun sama kitka toistuu eri keskusteluissa,
+            siitä syntyy yhteinen havainto.
           </p>
 
-          <ul class="impact-benefits">
-            <li>Tuki silloin, kun kysymys syntyy</li>
-            <li>Toistuvat ilmiöt näkyviksi</li>
-            <li>Pohja kansalliselle mittarille</li>
-          </ul>
+        </article>
 
-          <p class="impact-solution__close">
-            <a class="textlink" href="./data.html">
-              Näin rakennamme Suomelle uuden näkymän →
-            </a>
+
+        <article class="chain-step chain-step--signal">
+
+          <span>04</span>
+
+          <h3>
+            Kansallinen näkymä
+          </h3>
+
+          <p>
+            Toistuvista ilmiöistä rakennetaan kestävän
+            työelämään kiinnittymisen mittaria.
           </p>
 
-        </div>
+        </article>
 
 
-        <figure class="impact-phone reveal">
+        <article class="chain-step chain-step--signal">
 
-          <img
-            src="./assets/kuvat/ai-valmentaja-transparent.png"
-            alt="AI-valmentajan käyttöliittymä älypuhelimen näytöllä."
-            width="1042"
-            height="1024"
-            loading="lazy"
-            decoding="async"
-          >
+          <span>05</span>
 
-          <figcaption class="sr-only">
-            First Five Yearsissa käytettävä AI-valmentaja.
-            Palvelun tarjoaa Adaptive Works.
-          </figcaption>
+          <h3>
+            Paremmat päätökset
+          </h3>
 
-        </figure>
+          <p>
+            Tieto auttaa kohdistamaan ratkaisuja ennen kuin
+            kitka näkyy vasta lopputuloksissa.
+          </p>
+
+        </article>
 
       </div>
+
+
+      <div class="chain-legend">
+
+        <p>
+          Hyöty nuorelle
+        </p>
+
+        <p>
+          Hyöty Suomelle
+        </p>
+
+      </div>
+
+
+      <p class="viz-note">
+        Yksittäinen keskustelu kuuluu käyttäjälle. Kansallinen tieto
+        syntyy toistuvista ilmiöistä, ei yksittäisen ihmisen profiloinnista.
+        <a class="textlink" href="./data.html">
+          Näin rakennamme Suomelle uuden näkymän →
+        </a>
+      </p>
 
     </div>
 
@@ -372,42 +557,152 @@
       </div>
 
 
-      <div class="pilot-numbers">
+      <!-- VISUAL 03: SIGNAALI -->
 
-        <article class="pilot-stat reveal">
-          <div class="pilot-number">82</div>
-          <p>käyttäjää</p>
-        </article>
+      <div class="viz signal-grid">
 
-        <article class="pilot-stat reveal">
-          <div class="pilot-number">380</div>
-          <p>valmennuskeskustelua</p>
-        </article>
+        <div>
 
-        <article class="pilot-stat reveal">
-          <div class="pilot-number">~10 000</div>
-          <p>viestiä</p>
-        </article>
+          <p class="signal-meta">
+            82 käyttäjää · 380 keskustelua · ~10 000 viestiä
+          </p>
+
+          <p class="viz-lede">
+            Eri keskusteluissa alkoi toistua samoja tilanteita.
+          </p>
+
+          <div
+            class="signal-field"
+            aria-label="Havainnollistus erillisistä keskusteluista, joissa osa muodostaa toistuvia signaaleja"
+          >
+
+            <i></i>
+            <i></i>
+            <i class="on"></i>
+            <i></i>
+            <i></i>
+
+            <i></i>
+            <i class="on"></i>
+            <i></i>
+            <i></i>
+            <i></i>
+
+            <i></i>
+            <i></i>
+            <i></i>
+            <i class="on"></i>
+            <i></i>
+
+            <i></i>
+            <i></i>
+            <i class="on"></i>
+            <i></i>
+            <i></i>
+
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i class="on"></i>
+
+            <i></i>
+            <i class="on"></i>
+            <i></i>
+            <i></i>
+            <i></i>
+
+            <i></i>
+            <i></i>
+            <i class="on"></i>
+            <i></i>
+            <i></i>
+
+            <i></i>
+            <i></i>
+            <i></i>
+            <i class="on"></i>
+            <i></i>
+
+            <i></i>
+            <i></i>
+            <i></i>
+            <i></i>
+            <i class="on"></i>
+
+            <i></i>
+            <i class="on"></i>
+            <i></i>
+            <i></i>
+            <i></i>
+
+            <i></i>
+            <i></i>
+            <i></i>
+            <i class="on"></i>
+            <i></i>
+
+            <i></i>
+            <i></i>
+            <i class="on"></i>
+            <i></i>
+            <i></i>
+
+          </div>
+
+          <p class="viz-caption">
+            Yksittäiset keskustelut ovat erillisiä. Arvo syntyy siitä,
+            että samantyyppinen kitka alkaa toistua.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <p class="viz-label viz-label--signal">
+            10 toistuvaa mallia
+          </p>
+
+          <ul class="signal-patterns">
+
+            <li>
+              <b style="max-width: 74%;"></b>
+              <span>Palaute</span>
+            </li>
+
+            <li>
+              <b style="max-width: 66%;"></b>
+              <span>Vastuu ja päätösvalta</span>
+            </li>
+
+            <li>
+              <b style="max-width: 58%;"></b>
+              <span>Oman äänen käyttäminen</span>
+            </li>
+
+            <li>
+              <b style="max-width: 48%;"></b>
+              <span>Keskeneräisen työn jakaminen</span>
+            </li>
+
+            <li>
+              <b style="max-width: 32%;"></b>
+              <span>+ 6 muuta mallia</span>
+            </li>
+
+          </ul>
+
+        </div>
 
       </div>
 
 
-      <div class="pilot-copy reveal">
-
-        <p>
-          Kahdessa kuukaudessa eri nuorten keskusteluissa alkoi toistua
-          samoja tilanteita. Pilotissa tunnistettiin kymmenen mallia,
-          jotka liittyivät esimerkiksi palautteeseen, vastuuseen,
-          oman äänen käyttämiseen ja keskeneräisen työn jakamiseen.
-        </p>
-
-        <p>
-          Pilotti ei vielä kerro ilmiöiden yleisyydestä Suomessa.
-          Se osoitti, että työelämän alkuvaiheen kitkaa voidaan tunnistaa
-          ennen kuin se näkyy perinteisissä tilastoissa.
-        </p>
-
-      </div>
+      <p class="viz-note">
+        Pilotti ei vielä kerro ilmiöiden yleisyydestä Suomessa.
+        Se osoitti, että työelämän alkuvaiheen kitkaa voidaan tunnistaa
+        ennen kuin se näkyy perinteisissä tilastoissa.
+      </p>
 
     </div>
 
@@ -465,9 +760,8 @@
           </h3>
 
           <p>
-            Työelämän alkua ei rakenneta uskottavasti ilman niitä,
-            jotka elävät sitä juuri nyt. Nuorilla on mukana myös
-            päätösvaltaa.
+            Nuoret ovat mukana palvelun rakentamisessa ja
+            päätöksenteossa, eivät vain käyttäjinä.
           </p>
 
         </article>
@@ -493,8 +787,7 @@
 
       <p class="movement-close reveal">
         Tavoite on yksinkertainen: Suomi on maailman paras paikka
-        aloittaa työelämä, ja meillä on myös tieto, jolla sen
-        toteutumista voidaan seurata.
+        aloittaa työelämä, ja pystymme myös näkemään, toteutuuko se.
       </p>
 
     </div>
@@ -824,31 +1117,12 @@
       class="footer-nav"
       aria-label="Alatunniste"
     >
-
-      <a href="#miksi">
-        Miksi
-      </a>
-
-      <a href="/missio.html">
-        Missio
-      </a>
-
-      <a href="./data.html">
-        Data
-      </a>
-
-      <a href="#liike">
-        Liike
-      </a>
-
-      <a href="#kuka">
-        Taustalla
-      </a>
-
-      <a href="#yhteys">
-        Tule mukaan
-      </a>
-
+      <a href="#miksi">Miksi</a>
+      <a href="/missio.html">Missio</a>
+      <a href="./data.html">Data</a>
+      <a href="#liike">Liike</a>
+      <a href="#kuka">Taustalla</a>
+      <a href="#yhteys">Tule mukaan</a>
     </nav>
 
   </div>

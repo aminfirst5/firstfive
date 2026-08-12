@@ -73,8 +73,57 @@
   >
 
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,500&display=swap">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,500&display=swap"
+    >
   </noscript>
+
+  <style>
+    .data-stats--five {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .data-stats--five .data-stat {
+      min-width: 0;
+    }
+
+    .data-stats--five .data-stat__num {
+      font-size: clamp(2.6rem, 4vw, 4.8rem);
+      line-height: 0.95;
+      white-space: nowrap;
+    }
+
+    .data-stats--five .data-stat:nth-child(4) .data-stat__num {
+      font-size: clamp(2.2rem, 3.3vw, 4rem);
+    }
+
+    @media (max-width: 900px) {
+      .data-stats--five {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .data-stats--five .data-stat:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .data-stats--five {
+        grid-template-columns: 1fr;
+      }
+
+      .data-stats--five .data-stat:last-child {
+        grid-column: auto;
+      }
+
+      .data-stats--five .data-stat__num,
+      .data-stats--five .data-stat:nth-child(4) .data-stat__num {
+        font-size: clamp(2.8rem, 14vw, 4.5rem);
+      }
+    }
+  </style>
+
 </head>
 
 
@@ -131,9 +180,7 @@
   <article class="data-page">
 
 
-    <!-- =====================================================
-         INTRO
-         ===================================================== -->
+    <!-- INTRO -->
 
     <header class="data-intro">
 
@@ -178,9 +225,7 @@
     </header>
 
 
-    <!-- =====================================================
-         01 MITTAUSKATVEALUE
-         ===================================================== -->
+    <!-- 01 MITTAUSKATVEALUE -->
 
     <section
       class="data-section"
@@ -223,9 +268,7 @@
             mutta jatkuvaa näkymää koko matkan yli ei tällä hetkellä ole.
           </p>
 
-
           <div class="cov-head" aria-hidden="true">
-
             <div></div>
 
             <div class="cov-phases">
@@ -236,14 +279,11 @@
               <span>1–2 vuotta</span>
               <span>3–5 vuotta</span>
             </div>
-
           </div>
-
 
           <div class="cov-row">
 
             <div class="cov-label">
-
               <p class="cov-name">
                 Oppilaitokset ja kasvatustoimijat
               </p>
@@ -251,7 +291,6 @@
               <p class="cov-note">
                 Näkevät erityisesti opiskeluajan ja siirtymän valmistumiseen.
               </p>
-
             </div>
 
             <div class="cov-track">
@@ -263,11 +302,9 @@
 
           </div>
 
-
           <div class="cov-row">
 
             <div class="cov-label">
-
               <p class="cov-name">
                 Työmarkkinatilastot ja rekisterit
               </p>
@@ -276,7 +313,6 @@
                 Kertovat esimerkiksi työllisyydestä ja työttömyydestä,
                 mutta vähemmän kokemuksesta niiden takana.
               </p>
-
             </div>
 
             <div class="cov-track">
@@ -288,11 +324,9 @@
 
           </div>
 
-
           <div class="cov-row">
 
             <div class="cov-label">
-
               <p class="cov-name">
                 Jatkuva näkymä ensimmäisten työvuosien kaareen
               </p>
@@ -300,7 +334,6 @@
               <p class="cov-note">
                 Tätä kokonaisuutta haluamme tehdä näkyväksi.
               </p>
-
             </div>
 
             <div class="cov-track">
@@ -314,7 +347,6 @@
 
         </div>
 
-
         <figcaption>
           Eri toimijat näkevät nuoren polusta eri vaiheita.
           First Five Years tutkii, voidaanko niiden väliin rakentaa
@@ -326,9 +358,7 @@
     </section>
 
 
-    <!-- =====================================================
-         02 KAKSI HAARAA
-         ===================================================== -->
+    <!-- 02 KAKSI HAARAA -->
 
     <section
       class="data-section"
@@ -345,7 +375,6 @@
         Ensin pitää päästä sisään.
         Sen jälkeen pitäisi päästä kasvamaan.
       </h2>
-
 
       <div class="arms">
 
@@ -368,7 +397,6 @@
 
         </article>
 
-
         <article class="arm reveal">
 
           <p class="subhead">
@@ -389,7 +417,6 @@
 
       </div>
 
-
       <p class="data-body data-body--wide">
         Työllisyys kertoo tärkeän asian: onko ihminen työssä.
         Kestävä kiinnittyminen kysyy lisäksi, millaiseksi suhde
@@ -399,9 +426,7 @@
     </section>
 
 
-    <!-- =====================================================
-         03 NYKYINEN TIETO
-         ===================================================== -->
+    <!-- 03 NYKYINEN TIETO -->
 
     <section
       class="data-section"
@@ -418,7 +443,6 @@
         Nykyinen tieto kertoo paljon työmarkkinoista.
         Se ei vielä kerro koko tarinaa ensimmäisistä työvuosista.
       </h2>
-
 
       <div class="source-grid">
 
@@ -514,7 +538,6 @@
 
       </div>
 
-
       <div class="reading reveal">
 
         <p class="subhead">
@@ -544,9 +567,7 @@
     </section>
 
 
-    <!-- =====================================================
-         04 PILOTTI
-         ===================================================== -->
+    <!-- 04 PILOTTI -->
 
     <section
       class="data-section"
@@ -639,133 +660,63 @@
           <tbody>
 
             <tr>
-              <th scope="row">
-                <span class="pt-idx">01</span>
-                Puheenvuoro jää ottamatta
-              </th>
-              <td class="pt-quote">
-                “Valmistelin mitä sanoisin, mutta hetki meni ohi.”
-              </td>
-              <td class="pt-strength">
-                Harkitsevuus
-              </td>
+              <th scope="row"><span class="pt-idx">01</span> Puheenvuoro jää ottamatta</th>
+              <td class="pt-quote">“Valmistelin mitä sanoisin, mutta hetki meni ohi.”</td>
+              <td class="pt-strength">Harkitsevuus</td>
             </tr>
 
             <tr>
-              <th scope="row">
-                <span class="pt-idx">02</span>
-                Täydellisyyden lamaannus
-              </th>
-              <td class="pt-quote">
-                “Muokkaan sitä päässäni yhä uudelleen.”
-              </td>
-              <td class="pt-strength">
-                Korkeat vaatimukset
-              </td>
+              <th scope="row"><span class="pt-idx">02</span> Täydellisyyden lamaannus</th>
+              <td class="pt-quote">“Muokkaan sitä päässäni yhä uudelleen.”</td>
+              <td class="pt-strength">Korkeat vaatimukset</td>
             </tr>
 
             <tr>
-              <th scope="row">
-                <span class="pt-idx">03</span>
-                Jälkikäteen kelaaminen
-              </th>
-              <td class="pt-quote">
-                “Käyn kokousta läpi tunteja jälkeenpäin.”
-              </td>
-              <td class="pt-strength">
-                Reflektiivisyys
-              </td>
+              <th scope="row"><span class="pt-idx">03</span> Jälkikäteen kelaaminen</th>
+              <td class="pt-quote">“Käyn kokousta läpi tunteja jälkeenpäin.”</td>
+              <td class="pt-strength">Reflektiivisyys</td>
             </tr>
 
             <tr>
-              <th scope="row">
-                <span class="pt-idx">04</span>
-                Palautteen välttäminen
-              </th>
-              <td class="pt-quote">
-                “Yritin kerran. Se meni huonosti. Nyt en enää.”
-              </td>
-              <td class="pt-strength">
-                Hienotunteisuus
-              </td>
+              <th scope="row"><span class="pt-idx">04</span> Palautteen välttäminen</th>
+              <td class="pt-quote">“Yritin kerran. Se meni huonosti. Nyt en enää.”</td>
+              <td class="pt-strength">Hienotunteisuus</td>
             </tr>
 
             <tr>
-              <th scope="row">
-                <span class="pt-idx">05</span>
-                Epäselvä vastuu
-              </th>
-              <td class="pt-quote">
-                “En tiedä, mistä minä saan päättää.”
-              </td>
-              <td class="pt-strength">
-                Kunnioitus
-              </td>
+              <th scope="row"><span class="pt-idx">05</span> Epäselvä vastuu</th>
+              <td class="pt-quote">“En tiedä, mistä minä saan päättää.”</td>
+              <td class="pt-strength">Kunnioitus</td>
             </tr>
 
             <tr>
-              <th scope="row">
-                <span class="pt-idx">06</span>
-                Yliselittäminen
-              </th>
-              <td class="pt-quote">
-                “He näyttivät hämmentyneiltä, joten lisäsin yksityiskohtia.”
-              </td>
-              <td class="pt-strength">
-                Perusteellisuus
-              </td>
+              <th scope="row"><span class="pt-idx">06</span> Yliselittäminen</th>
+              <td class="pt-quote">“He näyttivät hämmentyneiltä, joten lisäsin yksityiskohtia.”</td>
+              <td class="pt-strength">Perusteellisuus</td>
             </tr>
 
             <tr>
-              <th scope="row">
-                <span class="pt-idx">07</span>
-                Auktoriteettiherkkyys
-              </th>
-              <td class="pt-quote">
-                “He ovat olleet täällä pidempään. Oma näkemykseni on varmaan vähemmän pätevä.”
-              </td>
-              <td class="pt-strength">
-                Nöyryys
-              </td>
+              <th scope="row"><span class="pt-idx">07</span> Auktoriteettiherkkyys</th>
+              <td class="pt-quote">“He ovat olleet täällä pidempään. Oma näkemykseni on varmaan vähemmän pätevä.”</td>
+              <td class="pt-strength">Nöyryys</td>
             </tr>
 
             <tr>
-              <th scope="row">
-                <span class="pt-idx">08</span>
-                Myöhäinen jakaminen
-              </th>
-              <td class="pt-quote">
-                “Haluan sen valmiiksi ennen kuin kukaan näkee.”
-              </td>
-              <td class="pt-strength">
-                Ylpeys omasta työstä
-              </td>
+              <th scope="row"><span class="pt-idx">08</span> Myöhäinen jakaminen</th>
+              <td class="pt-quote">“Haluan sen valmiiksi ennen kuin kukaan näkee.”</td>
+              <td class="pt-strength">Ylpeys omasta työstä</td>
             </tr>
 
             <tr>
-              <th scope="row">
-                <span class="pt-idx">09</span>
-                Tiimin hiljaisuus
-              </th>
-              <td class="pt-quote">
-                “Koko huone hiljeni.”
-              </td>
-              <td class="pt-strength">
-                Herkkyys
-              </td>
+              <th scope="row"><span class="pt-idx">09</span> Tiimin hiljaisuus</th>
+              <td class="pt-quote">“Koko huone hiljeni.”</td>
+              <td class="pt-strength">Herkkyys</td>
             </tr>
 
             <tr>
-              <th scope="row">
-                <span class="pt-idx">10</span>
-                Välittämisen ylikuorma
-              </th>
-              <td class="pt-quote">
-                “Kannan sen kotiin, eikä se irrota.”
-              </td>
-              <td class="pt-strength">
-                Omistautuminen
-              </td>
+              <th scope="row"><span class="pt-idx">10</span> Välittämisen ylikuorma</th>
+              <td class="pt-quote">“Kannan sen kotiin, eikä se irrota.”</td>
+              <td class="pt-strength">Omistautuminen</td>
             </tr>
 
           </tbody>
@@ -788,20 +739,9 @@
         </p>
 
         <ol class="mechanism-steps">
-
-          <li>
-            Vahvuus kohtaa tilanteen, jossa sitä on vaikea käyttää.
-          </li>
-
-          <li>
-            Tilanne alkaa helposti tuntua omalta puutteelta.
-          </li>
-
-          <li>
-            Jos sama ilmiö toistuu riittävän monella, kannattaa kysyä
-            myös mitä ympäristössä tapahtuu.
-          </li>
-
+          <li>Vahvuus kohtaa tilanteen, jossa sitä on vaikea käyttää.</li>
+          <li>Tilanne alkaa helposti tuntua omalta puutteelta.</li>
+          <li>Jos sama ilmiö toistuu riittävän monella, kannattaa kysyä myös mitä ympäristössä tapahtuu.</li>
         </ol>
 
         <p class="mechanism-note">
@@ -826,86 +766,31 @@
       <div class="factor-grid">
 
         <article class="factor reveal">
-
           <span class="factor-idx">01</span>
-
-          <h3>
-            Kokoukset
-          </h3>
-
-          <p class="factor-missing">
-            <span>Kitka</span>
-            Kaikki eivät ehdi tai uskalla tuoda ajatustaan esiin samassa hetkessä.
-          </p>
-
-          <p class="factor-fix">
-            <span>Testattava käytäntö</span>
-            Agenda etukäteen, tilaa jokaiselle ja mahdollisuus täydentää ajatusta myös kokouksen jälkeen.
-          </p>
-
+          <h3>Kokoukset</h3>
+          <p class="factor-missing"><span>Kitka</span>Kaikki eivät ehdi tai uskalla tuoda ajatustaan esiin samassa hetkessä.</p>
+          <p class="factor-fix"><span>Testattava käytäntö</span>Agenda etukäteen, tilaa jokaiselle ja mahdollisuus täydentää ajatusta myös kokouksen jälkeen.</p>
         </article>
 
-
         <article class="factor reveal">
-
           <span class="factor-idx">02</span>
-
-          <h3>
-            Palaute
-          </h3>
-
-          <p class="factor-missing">
-            <span>Kitka</span>
-            Palautetta tulee harvoin tai vasta silloin, kun jokin on mennyt pieleen.
-          </p>
-
-          <p class="factor-fix">
-            <span>Testattava käytäntö</span>
-            Pieni ja säännöllinen palaute osaksi tavallista työn tekemistä.
-          </p>
-
+          <h3>Palaute</h3>
+          <p class="factor-missing"><span>Kitka</span>Palautetta tulee harvoin tai vasta silloin, kun jokin on mennyt pieleen.</p>
+          <p class="factor-fix"><span>Testattava käytäntö</span>Pieni ja säännöllinen palaute osaksi tavallista työn tekemistä.</p>
         </article>
 
-
         <article class="factor reveal">
-
           <span class="factor-idx">03</span>
-
-          <h3>
-            Roolit ja päätösvalta
-          </h3>
-
-          <p class="factor-missing">
-            <span>Kitka</span>
-            Nuori ei tiedä, mistä hän saa päättää ilman erillistä lupaa.
-          </p>
-
-          <p class="factor-fix">
-            <span>Testattava käytäntö</span>
-            Tehdään näkyväksi, missä asioissa päätösvalta kuuluu työntekijälle itselleen.
-          </p>
-
+          <h3>Roolit ja päätösvalta</h3>
+          <p class="factor-missing"><span>Kitka</span>Nuori ei tiedä, mistä hän saa päättää ilman erillistä lupaa.</p>
+          <p class="factor-fix"><span>Testattava käytäntö</span>Tehdään näkyväksi, missä asioissa päätösvalta kuuluu työntekijälle itselleen.</p>
         </article>
 
-
         <article class="factor reveal">
-
           <span class="factor-idx">04</span>
-
-          <h3>
-            Perehdytys
-          </h3>
-
-          <p class="factor-missing">
-            <span>Kitka</span>
-            On vaikea arvioida omaa työtä, jos kukaan ei ole näyttänyt miltä riittävän hyvä näyttää.
-          </p>
-
-          <p class="factor-fix">
-            <span>Testattava käytäntö</span>
-            Konkreettiset esimerkit ja säännöllinen keskustelu ensimmäisten kuukausien aikana.
-          </p>
-
+          <h3>Perehdytys</h3>
+          <p class="factor-missing"><span>Kitka</span>On vaikea arvioida omaa työtä, jos kukaan ei ole näyttänyt miltä riittävän hyvä näyttää.</p>
+          <p class="factor-fix"><span>Testattava käytäntö</span>Konkreettiset esimerkit ja säännöllinen keskustelu ensimmäisten kuukausien aikana.</p>
         </article>
 
       </div>
@@ -913,9 +798,7 @@
     </section>
 
 
-    <!-- =====================================================
-         05 MITTARIKONSEPTI
-         ===================================================== -->
+    <!-- 05 MITTARIKONSEPTI -->
 
     <section
       class="data-section"
@@ -948,136 +831,64 @@
       </p>
 
 
-      <div
-        class="panel"
-        role="group"
-        aria-labelledby="panel-flag"
-      >
+      <div class="panel" role="group" aria-labelledby="panel-flag">
 
-        <div
-          class="panel-flag"
-          id="panel-flag"
-        >
-
-          <span class="panel-badge">
-            Havainnollistus
-          </span>
-
+        <div class="panel-flag" id="panel-flag">
+          <span class="panel-badge">Havainnollistus</span>
           Kaikki tämän kehyksen sisällä olevat luvut ovat keksittyjä
           esimerkkejä. Ne eivät ole mittaustuloksia eikä niitä saa
           käyttää lähteenä.
-
         </div>
-
 
         <div class="panel-head">
 
           <div class="hero-figure">
-
-            <p class="tile-label">
-              Kestävän kiinnittymisen indeksi
-            </p>
-
-            <p class="hero-value">
-              58
-            </p>
-
-            <p class="tile-note">
-              esimerkki mahdollisesta koosteindeksistä asteikolla 0–100
-            </p>
-
+            <p class="tile-label">Kestävän kiinnittymisen indeksi</p>
+            <p class="hero-value">58</p>
+            <p class="tile-note">esimerkki mahdollisesta koosteindeksistä asteikolla 0–100</p>
           </div>
-
 
           <div class="tiles">
 
             <article class="tile">
-
-              <p class="tile-label">
-                Pääsy
-              </p>
-
-              <p class="tile-value">
-                51
-              </p>
-
-              <p class="tile-note">
-                reitti sisään, palaute ja odotusten vastaavuus
-              </p>
-
+              <p class="tile-label">Pääsy</p>
+              <p class="tile-value">51</p>
+              <p class="tile-note">reitti sisään, palaute ja odotusten vastaavuus</p>
             </article>
 
-
             <article class="tile">
-
-              <p class="tile-label">
-                Kiinnittyminen
-              </p>
-
-              <p class="tile-value">
-                64
-              </p>
-
-              <p class="tile-note">
-                kehittyminen, turvallisuus ja osaamisen käyttö
-              </p>
-
+              <p class="tile-label">Kiinnittyminen</p>
+              <p class="tile-value">64</p>
+              <p class="tile-note">kehittyminen, turvallisuus ja osaamisen käyttö</p>
             </article>
 
-
             <article class="tile">
-
-              <p class="tile-label">
-                Kattavuus
-              </p>
-
-              <p class="tile-value">
-                24&nbsp;500
-              </p>
-
-              <p class="tile-note">
-                esimerkki seurannan piirissä olevien määrästä
-              </p>
-
+              <p class="tile-label">Kattavuus</p>
+              <p class="tile-value">24&nbsp;500</p>
+              <p class="tile-note">esimerkki seurannan piirissä olevien määrästä</p>
             </article>
 
           </div>
 
         </div>
 
-
-        <!-- KOMPONENTIT -->
-
         <figure class="chart">
 
           <figcaption>
-
-            <h3>
-              Mahdolliset komponentit
-            </h3>
-
+            <h3>Mahdolliset komponentit</h3>
             <p>
               Jos kiinnittymistä kuvataan yhdellä indeksillä, sen
               osatekijät pitää näyttää aina erikseen. Muuten yksi luku
               voi peittää enemmän kuin se kertoo. Havainnollistus.
             </p>
-
           </figcaption>
 
-
-          <div
-            class="bar-chart"
-            id="chart-components"
-          >
+          <div class="bar-chart" id="chart-components">
 
             <div class="bar-row">
               <div class="bar-label">Koettu turvallisuus</div>
               <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 64%"
-                  data-tip="Koettu turvallisuus: 64 (havainnollistus)"
-                ></div>
+                <div class="bar-fill" style="width: 64%" data-tip="Koettu turvallisuus: 64 (havainnollistus)"></div>
               </div>
               <div class="bar-value">64</div>
             </div>
@@ -1085,11 +896,7 @@
             <div class="bar-row">
               <div class="bar-label">Toimijuus</div>
               <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 55%"
-                  data-tip="Toimijuus: 55 (havainnollistus)"
-                ></div>
+                <div class="bar-fill" style="width: 55%" data-tip="Toimijuus: 55 (havainnollistus)"></div>
               </div>
               <div class="bar-value">55</div>
             </div>
@@ -1097,11 +904,7 @@
             <div class="bar-row">
               <div class="bar-label">Jatkuvuus ja katkokset</div>
               <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 61%"
-                  data-tip="Jatkuvuus ja katkokset: 61 (havainnollistus)"
-                ></div>
+                <div class="bar-fill" style="width: 61%" data-tip="Jatkuvuus ja katkokset: 61 (havainnollistus)"></div>
               </div>
               <div class="bar-value">61</div>
             </div>
@@ -1109,11 +912,7 @@
             <div class="bar-row">
               <div class="bar-label">Osaamisen käyttö</div>
               <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 49%"
-                  data-tip="Osaamisen käyttö: 49 (havainnollistus)"
-                ></div>
+                <div class="bar-fill" style="width: 49%" data-tip="Osaamisen käyttö: 49 (havainnollistus)"></div>
               </div>
               <div class="bar-value">49</div>
             </div>
@@ -1121,15 +920,10 @@
             <div class="bar-row">
               <div class="bar-label">Kuormituksen kantavuus</div>
               <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 58%"
-                  data-tip="Kuormituksen kantavuus: 58 (havainnollistus)"
-                ></div>
+                <div class="bar-fill" style="width: 58%" data-tip="Kuormituksen kantavuus: 58 (havainnollistus)"></div>
               </div>
               <div class="bar-value">58</div>
             </div>
-
 
             <div class="bar-axis" aria-hidden="true">
               <div class="bar-axis__ticks">
@@ -1141,73 +935,25 @@
 
           </div>
 
-
-          <details class="chart-table">
-
-            <summary>
-              Näytä lukuina
-            </summary>
-
-            <table>
-
-              <caption>
-                Kestävän kiinnittymisen mahdolliset komponentit,
-                asteikko 0–100 (havainnollistus)
-              </caption>
-
-              <thead>
-                <tr>
-                  <th scope="col">Komponentti</th>
-                  <th scope="col">Arvo</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr><th scope="row">Koettu turvallisuus</th><td>64</td></tr>
-                <tr><th scope="row">Toimijuus</th><td>55</td></tr>
-                <tr><th scope="row">Jatkuvuus ja katkokset</th><td>61</td></tr>
-                <tr><th scope="row">Osaamisen käyttö</th><td>49</td></tr>
-                <tr><th scope="row">Kuormituksen kantavuus</th><td>58</td></tr>
-              </tbody>
-
-            </table>
-
-          </details>
-
         </figure>
 
-
-        <!-- PÄÄSY -->
 
         <figure class="chart">
 
           <figcaption>
-
-            <h3>
-              Pääsy — mitä tapahtuu ennen ensimmäistä paikkaa?
-            </h3>
-
+            <h3>Pääsy — mitä tapahtuu ennen ensimmäistä paikkaa?</h3>
             <p>
               Esimerkkejä kysymyksistä, joita siirtymästä voisi
               seurata työllistymisen rinnalla. Havainnollistus.
             </p>
-
           </figcaption>
 
-
-          <div
-            class="bar-chart"
-            id="chart-access"
-          >
+          <div class="bar-chart" id="chart-access">
 
             <div class="bar-row">
               <div class="bar-label">Ymmärtää, miten hakuprosessissa arvioidaan</div>
               <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 29%"
-                  data-tip="Ymmärtää, miten hakuprosessissa arvioidaan: 29 % (havainnollistus)"
-                ></div>
+                <div class="bar-fill" style="width: 29%" data-tip="Ymmärtää, miten hakuprosessissa arvioidaan: 29 % (havainnollistus)"></div>
               </div>
               <div class="bar-value">29<span class="unit"> %</span></div>
             </div>
@@ -1215,11 +961,7 @@
             <div class="bar-row">
               <div class="bar-label">Sai palautetta viimeisimmästä hylkäyksestä</div>
               <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 18%"
-                  data-tip="Sai palautetta viimeisimmästä hylkäyksestä: 18 % (havainnollistus)"
-                ></div>
+                <div class="bar-fill" style="width: 18%" data-tip="Sai palautetta viimeisimmästä hylkäyksestä: 18 % (havainnollistus)"></div>
               </div>
               <div class="bar-value">18<span class="unit"> %</span></div>
             </div>
@@ -1227,11 +969,7 @@
             <div class="bar-row">
               <div class="bar-label">Tiesi ennalta, mitä alan työ käytännössä on</div>
               <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 37%"
-                  data-tip="Tiesi ennalta, mitä alan työ käytännössä on: 37 % (havainnollistus)"
-                ></div>
+                <div class="bar-fill" style="width: 37%" data-tip="Tiesi ennalta, mitä alan työ käytännössä on: 37 % (havainnollistus)"></div>
               </div>
               <div class="bar-value">37<span class="unit"> %</span></div>
             </div>
@@ -1239,11 +977,7 @@
             <div class="bar-row">
               <div class="bar-label">Odotukset vastasivat ensimmäistä työpaikkaa</div>
               <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 41%"
-                  data-tip="Odotukset vastasivat ensimmäistä työpaikkaa: 41 % (havainnollistus)"
-                ></div>
+                <div class="bar-fill" style="width: 41%" data-tip="Odotukset vastasivat ensimmäistä työpaikkaa: 41 % (havainnollistus)"></div>
               </div>
               <div class="bar-value">41<span class="unit"> %</span></div>
             </div>
@@ -1251,15 +985,10 @@
             <div class="bar-row">
               <div class="bar-label">Löysi oman alan työtä kuudessa kuukaudessa</div>
               <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 62%"
-                  data-tip="Löysi oman alan työtä kuudessa kuukaudessa: 62 % (havainnollistus)"
-                ></div>
+                <div class="bar-fill" style="width: 62%" data-tip="Löysi oman alan työtä kuudessa kuukaudessa: 62 % (havainnollistus)"></div>
               </div>
               <div class="bar-value">62<span class="unit"> %</span></div>
             </div>
-
 
             <div class="bar-axis" aria-hidden="true">
               <div class="bar-axis__ticks">
@@ -1271,66 +1000,20 @@
 
           </div>
 
-
-          <details class="chart-table">
-
-            <summary>
-              Näytä lukuina
-            </summary>
-
-            <table>
-
-              <caption>
-                Esimerkkejä pääsyn mittareista
-                (havainnollistus)
-              </caption>
-
-              <thead>
-                <tr>
-                  <th scope="col">Mittari</th>
-                  <th scope="col">Osuus</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr><th scope="row">Ymmärtää, miten hakuprosessissa arvioidaan</th><td>29 %</td></tr>
-                <tr><th scope="row">Sai palautetta viimeisimmästä hylkäyksestä</th><td>18 %</td></tr>
-                <tr><th scope="row">Tiesi ennalta, mitä alan työ käytännössä on</th><td>37 %</td></tr>
-                <tr><th scope="row">Odotukset vastasivat ensimmäistä työpaikkaa</th><td>41 %</td></tr>
-                <tr><th scope="row">Löysi oman alan työtä kuudessa kuukaudessa</th><td>62 %</td></tr>
-              </tbody>
-
-            </table>
-
-          </details>
-
         </figure>
 
-
-        <!-- TOISTUVAT MALLIT -->
 
         <figure class="chart">
 
           <figcaption>
-
-            <h3>
-              Kiinnittyminen — kuinka yleisiä pilotissa tunnistetut ilmiöt ovat?
-            </h3>
-
+            <h3>Kiinnittyminen — kuinka yleisiä pilotissa tunnistetut ilmiöt ovat?</h3>
             <p>
-              Pilotti tunnisti malleja, mutta ei mitannut niiden
-              yleisyyttä. Tulevassa aineistossa yksi kysymys on,
-              kuinka monen nuoren kohdalla samat ilmiöt toistuvat.
+              Pilotti tunnisti malleja, mutta ei mitannut niiden yleisyyttä.
               Alla olevat luvut ovat havainnollistuksia.
             </p>
-
           </figcaption>
 
-
-          <div
-            class="bar-chart"
-            id="chart-prevalence"
-          >
+          <div class="bar-chart" id="chart-prevalence">
 
             <div class="bar-row">
               <div class="bar-label">Jälkikäteen kelaaminen</div>
@@ -1412,7 +1095,6 @@
               <div class="bar-value">19<span class="unit"> %</span></div>
             </div>
 
-
             <div class="bar-axis" aria-hidden="true">
               <div class="bar-axis__ticks">
                 <span>0</span>
@@ -1426,84 +1108,47 @@
         </figure>
 
 
-        <!-- TYÖSUHTEEN KESTO -->
-
         <figure class="chart">
 
           <figcaption>
-
-            <h3>
-              Muuttuuko kitka työvuosien aikana?
-            </h3>
-
+            <h3>Muuttuuko kitka työvuosien aikana?</h3>
             <p>
               Yksi tulevan mittauksen kysymyksistä on, painottuvatko
               tietyt ilmiöt työuran ensimmäisiin kuukausiin vai
               jatkuvatko ne pidemmälle. Havainnollistus.
             </p>
-
           </figcaption>
 
-
-          <div
-            class="col-chart"
-            id="chart-tenure"
-          >
+          <div class="col-chart" id="chart-tenure">
 
             <div class="col-slot">
-
               <div class="col-track">
                 <div class="col-bar" style="height: 86.67%">
                   <span class="col-value">52<span class="unit"> %</span></span>
-                  <span
-                    class="col-fill col-o1"
-                    data-tip="0–6 kk: 52 % (havainnollistus)"
-                  ></span>
+                  <span class="col-fill col-o1" data-tip="0–6 kk: 52 % (havainnollistus)"></span>
                 </div>
               </div>
-
-              <div class="col-label">
-                0–6 kk
-              </div>
-
+              <div class="col-label">0–6 kk</div>
             </div>
 
-
             <div class="col-slot">
-
               <div class="col-track">
                 <div class="col-bar" style="height: 68.33%">
                   <span class="col-value">41<span class="unit"> %</span></span>
-                  <span
-                    class="col-fill col-o2"
-                    data-tip="6–24 kk: 41 % (havainnollistus)"
-                  ></span>
+                  <span class="col-fill col-o2" data-tip="6–24 kk: 41 % (havainnollistus)"></span>
                 </div>
               </div>
-
-              <div class="col-label">
-                6–24 kk
-              </div>
-
+              <div class="col-label">6–24 kk</div>
             </div>
 
-
             <div class="col-slot">
-
               <div class="col-track">
                 <div class="col-bar" style="height: 46.67%">
                   <span class="col-value">28<span class="unit"> %</span></span>
-                  <span
-                    class="col-fill col-o3"
-                    data-tip="2–5 v: 28 % (havainnollistus)"
-                  ></span>
+                  <span class="col-fill col-o3" data-tip="2–5 v: 28 % (havainnollistus)"></span>
                 </div>
               </div>
-
-              <div class="col-label">
-                2–5 v
-              </div>
-
+              <div class="col-label">2–5 v</div>
             </div>
 
           </div>
@@ -1511,30 +1156,19 @@
         </figure>
 
 
-        <!-- SIGNAALI -->
-
         <figure class="chart">
 
           <figcaption>
-
-            <h3>
-              Signaali ja mittari eivät ole sama asia
-            </h3>
-
+            <h3>Signaali ja mittari eivät ole sama asia</h3>
             <p>
               Nopea näkymä voi auttaa huomaamaan muutoksen.
               Päätöksenteossa käytettävä mittari vaatii enemmän:
               vakaat määritelmät, riittävän aineiston ja arvioidun
               menetelmän. Havainnollistus.
             </p>
-
           </figcaption>
 
-
-          <div
-            class="line-chart"
-            id="chart-trend"
-          >
+          <div class="line-chart" id="chart-trend">
 
             <div class="line-y" aria-hidden="true">
               <span class="y-tick" style="top: 0%">60 %</span>
@@ -1542,7 +1176,6 @@
               <span class="y-tick" style="top: 66.67%">20</span>
               <span class="y-tick" style="top: 100%">0</span>
             </div>
-
 
             <div class="line-plot">
 
@@ -1577,15 +1210,11 @@
 
               </svg>
 
-              <span
-                class="line-endlabel"
-                style="top: 28.33%"
-              >
+              <span class="line-endlabel" style="top: 28.33%">
                 43 %
               </span>
 
             </div>
-
 
             <div class="line-x" aria-hidden="true">
               <span class="x-tick" style="left: 1.14%">Q1/27</span>
@@ -1606,31 +1235,20 @@
         <div class="speeds">
 
           <div class="speed">
-
-            <p class="subhead">
-              Signaali
-            </p>
-
+            <p class="subhead">Signaali</p>
             <p>
               Nopea näkymä siihen, mikä näyttää muuttuvan.
               Sen tehtävä on herättää kysymys, ei todistaa vastausta.
             </p>
-
           </div>
 
-
           <div class="speed">
-
-            <p class="subhead">
-              Mittari
-            </p>
-
+            <p class="subhead">Mittari</p>
             <p>
               Hitaampi ja vakaampi. Määritelmät, aineisto ja menetelmä
               pitää pystyä arvioimaan ennen kuin lukua käytetään
               päätöksenteossa.
             </p>
-
           </div>
 
         </div>
@@ -1666,9 +1284,7 @@
     </section>
 
 
-    <!-- =====================================================
-         06 VAIHEET
-         ===================================================== -->
+    <!-- 06 VAIHEET -->
 
     <section
       class="data-section"
@@ -1685,11 +1301,9 @@
         Kansallinen näkymä ei synny yhdestä ryhmästä.
       </h2>
 
-
       <ol class="phase-list">
 
         <li>
-
           <h3>
             Vaihe 1 — korkeakoulutettujen siirtymä
           </h3>
@@ -1700,12 +1314,9 @@
             ole tehdä tästä ryhmästä koko Suomen kuvaa, vaan rakentaa
             ensimmäinen toimiva mittausmalli.
           </p>
-
         </li>
 
-
         <li>
-
           <h3>
             Vaihe 2 — ammatillinen koulutus ja työpaikalla oppiminen
           </h3>
@@ -1717,12 +1328,9 @@
             voi vain kopioida, vaan sen pitää toimia erilaisissa
             siirtymissä.
           </p>
-
         </li>
 
-
         <li>
-
           <h3>
             Vaihe 3 — oppilaitoskanavien ulkopuolella olevat nuoret
           </h3>
@@ -1734,11 +1342,9 @@
             jää edelleen ulkopuolelle. Siksi myös tavoittamisen tapa
             pitää ratkaista.
           </p>
-
         </li>
 
       </ol>
-
 
       <p class="phase-close">
         Vasta tämän jälkeen voidaan arvioida, onko syntynyt aidosti
@@ -1749,9 +1355,7 @@
     </section>
 
 
-    <!-- =====================================================
-         07 STRATEGIA
-         ===================================================== -->
+    <!-- 07 STRATEGIA -->
 
     <section
       class="data-section"
@@ -1768,7 +1372,6 @@
         Suomikin on jo tunnistanut,
         ettei hyvä alku tarkoita vain ensimmäistä työpaikkaa.
       </h2>
-
 
       <blockquote class="strategy-quote">
 
@@ -1788,7 +1391,6 @@
         </footer>
 
       </blockquote>
-
 
       <div class="data-body data-body--wide">
 
@@ -1820,7 +1422,6 @@
 
       </div>
 
-
       <p class="source-line">
         Lähteet:
         <a
@@ -1843,10 +1444,7 @@
 
 
     <p class="back-link">
-      <a
-        class="textlink"
-        href="./#yhteys"
-      >
+      <a class="textlink" href="./#yhteys">
         Tule mukaan rakentamaan →
       </a>
     </p>
@@ -1855,10 +1453,6 @@
 
 </main>
 
-
-<!-- =======================================================
-     FOOTER
-     ======================================================= -->
 
 <footer class="footer">
 
@@ -1943,37 +1537,22 @@
     const r = target.getBoundingClientRect();
     const t = tip.getBoundingClientRect();
 
-    let left =
-      r.left +
-      r.width / 2 -
-      t.width / 2;
+    let left = r.left + r.width / 2 - t.width / 2;
 
     left = Math.max(
       8,
-      Math.min(
-        left,
-        window.innerWidth - t.width - 8
-      )
+      Math.min(left, window.innerWidth - t.width - 8)
     );
 
-    let top =
-      r.top -
-      t.height -
-      10;
+    let top = r.top - t.height - 10;
 
     if (top < 8) {
       top = r.bottom + 10;
     }
 
-    tip.style.left =
-      left +
-      window.scrollX +
-      "px";
+    tip.style.left = left + window.scrollX + "px";
+    tip.style.top = top + window.scrollY + "px";
 
-    tip.style.top =
-      top +
-      window.scrollY +
-      "px";
   };
 
 
@@ -1986,10 +1565,7 @@
     .querySelectorAll("[data-tip]")
     .forEach((el) => {
 
-      el.setAttribute(
-        "tabindex",
-        "0"
-      );
+      el.setAttribute("tabindex", "0");
 
       el.addEventListener(
         "mouseenter",

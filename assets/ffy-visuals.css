@@ -1,0 +1,596 @@
+/* =========================================================
+   FIRST FIVE YEARS — VISUALISOINNIT
+   Lisää tämä tiedosto styles.css:n jälkeen:
+   <link rel="stylesheet" href="./assets/ffy-visuals.css?v=1">
+   Käyttää olemassa olevia :root-muuttujia. Ei uusia värejä eikä fontteja.
+   ========================================================= */
+
+
+/* Yhteiset ------------------------------------------------ */
+
+.viz {
+  margin-top: clamp(3rem, 7vw, 5rem);
+}
+
+.viz-lede {
+  max-width: 30ch;
+
+  margin: 1.1rem 0 0;
+
+  font-family: var(--display);
+
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.7rem);
+  line-height: 1.35;
+}
+
+.viz-note {
+  max-width: 42rem;
+
+  margin: clamp(2.5rem, 5vw, 3.5rem) 0 0;
+
+  padding-top: 1.2rem;
+
+  border-top: 1px solid var(--rule);
+
+  font-size: 0.95rem;
+
+  color: var(--muted);
+}
+
+.viz-label {
+  margin: 0 0 0.55rem;
+
+  font-family: var(--mono);
+
+  font-size: 0.7rem;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.viz-label--signal {
+  color: var(--signal-ink);
+}
+
+.viz-caption {
+  margin: 0.55rem 0 0;
+
+  font-size: 0.9rem;
+
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   01 PUUTTUVA NÄKYMÄ  (.arc)
+   ========================================================= */
+
+.arc-stages {
+  display: grid;
+
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+}
+
+.arc-stages span {
+  min-width: 0;
+
+  padding: 0.7rem 0.5rem 0.7rem 0.6rem;
+
+  border-left: 1px solid var(--rule);
+
+  font-family: var(--mono);
+
+  font-size: clamp(0.56rem, 1.5vw, 0.7rem);
+  line-height: 1.3;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: var(--muted);
+}
+
+.arc-stages span:first-child {
+  border-left: 0;
+}
+
+.arc-rows {
+  padding-top: 2rem;
+}
+
+.arc-row {
+  padding-bottom: 1.6rem;
+}
+
+.arc-row + .arc-row {
+  padding-top: 1.6rem;
+
+  border-top: 1px solid var(--paper-dim);
+}
+
+.arc-row--ffy {
+  padding-bottom: 0;
+  padding-top: 1.9rem;
+
+  border-top: 1px solid var(--ink) !important;
+}
+
+.arc-track {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  align-items: center;
+
+  height: 10px;
+}
+
+/* Katkeamaton taustaviiva */
+.arc-track::before {
+  content: "";
+
+  position: absolute;
+  inset-inline: 0;
+
+  height: 1px;
+
+  background: var(--rule);
+}
+
+.arc-bar {
+  position: relative;
+
+  height: 3px;
+
+  background: var(--ink);
+}
+
+.arc-bar--ffy {
+  height: 5px;
+
+  background: var(--signal);
+}
+
+/* Rekisterien mittauspisteet */
+.arc-points {
+  position: relative;
+
+  grid-column: 1 / -1;
+
+  display: grid;
+
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  justify-items: center;
+}
+
+.arc-points i {
+  width: 3px;
+  height: 10px;
+
+  background: var(--ink);
+}
+
+
+/* =========================================================
+   02 NÄIN SE TOIMII  (.chain)  — tummalla pohjalla
+   ========================================================= */
+
+.chain {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0;
+}
+
+.chain-step {
+  flex: 1 1 11rem;
+
+  min-width: 0;
+
+  padding: 1.4rem 1.3rem 1.6rem;
+
+  border-top: 3px solid rgba(243, 241, 234, 0.55);
+
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.chain-step:first-child {
+  padding-left: 0;
+
+  border-left: 0;
+}
+
+.chain-step:last-child {
+  padding-right: 0;
+}
+
+/* Signaalista eteenpäin */
+.chain-step--signal {
+  border-top-color: var(--signal);
+}
+
+.chain-step--turn {
+  border-left-color: var(--signal);
+}
+
+.chain-step span {
+  display: block;
+
+  margin-bottom: 1.1rem;
+
+  font-family: var(--mono);
+
+  font-size: 0.7rem;
+
+  letter-spacing: 0.12em;
+
+  color: var(--on-ink-muted);
+}
+
+.chain-step--signal span,
+.chain-step--turn span {
+  color: var(--signal-lit);
+}
+
+.chain-step h3 {
+  margin: 0 0 0.7rem;
+
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.chain-step p {
+  margin: 0;
+
+  font-size: 0.9rem;
+  line-height: 1.5;
+
+  color: var(--on-ink-muted);
+}
+
+.chain-legend {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 1rem 3rem;
+
+  margin-top: 2.2rem;
+
+  padding-top: 1.2rem;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.chain-legend p {
+  margin: 0;
+
+  font-family: var(--mono);
+
+  font-size: 0.7rem;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: var(--on-ink-muted);
+}
+
+.chain-legend p + p {
+  color: var(--signal-lit);
+}
+
+
+/* =========================================================
+   03 PILOTTI  (.signal)
+   ========================================================= */
+
+.signal-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(20rem, 1fr));
+
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+
+  align-items: start;
+}
+
+.signal-meta {
+  margin: 0 0 1.2rem;
+
+  font-family: var(--mono);
+
+  font-size: 0.7rem;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: var(--muted);
+}
+
+.signal-field {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 4px 3px;
+
+  max-width: 30rem;
+}
+
+.signal-field i {
+  width: 2px;
+  height: 24px;
+
+  background: rgba(11, 14, 15, 0.22);
+}
+
+.signal-field i.on {
+  background: var(--signal);
+}
+
+.signal-patterns {
+  border-top: 1px solid var(--ink);
+}
+
+.signal-patterns li {
+  display: flex;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 0.62rem 0;
+
+  border-bottom: 1px solid var(--paper-dim);
+}
+
+.signal-patterns {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.signal-patterns b {
+  flex: 0 1 8rem;
+
+  height: 4px;
+
+  background: var(--signal);
+}
+
+.signal-patterns li:last-child b {
+  background: rgba(201, 138, 22, 0.45);
+}
+
+.signal-patterns li:last-child span {
+  font-family: var(--mono);
+
+  font-size: 0.78rem;
+
+  color: var(--muted);
+}
+
+.signal-patterns span {
+  font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   04 AJOITUS  (.timing)
+   ========================================================= */
+
+.timing-row {
+  padding-top: 1.8rem;
+
+  border-top: 1px solid var(--ink);
+}
+
+.timing-row + .timing-row {
+  margin-top: 0.5rem;
+}
+
+.timing-row > .viz-label {
+  margin-bottom: 2.2rem;
+
+  color: var(--muted);
+}
+
+.timing-row--ffy > .viz-label {
+  color: var(--signal-ink);
+}
+
+.timing-line {
+  position: relative;
+
+  height: 3px;
+
+  margin-bottom: 0.9rem;
+
+  background: var(--rule);
+}
+
+.timing-line .lead {
+  position: absolute;
+
+  left: 8%;
+
+  width: 14%;
+  height: 3px;
+
+  background: var(--signal);
+}
+
+.timing-line .start {
+  position: absolute;
+
+  left: 8%;
+  top: -9px;
+
+  width: 1px;
+  height: 21px;
+
+  background: var(--muted);
+}
+
+.timing-line .mark {
+  position: absolute;
+
+  top: -7px;
+
+  width: 17px;
+  height: 17px;
+
+  border-radius: 50%;
+
+  background: var(--ink);
+}
+
+.timing-line .mark--late {
+  left: 76%;
+}
+
+.timing-line .mark--early {
+  left: 22%;
+
+  background: var(--signal);
+}
+
+.timing-labels {
+  position: relative;
+
+  height: 3.6rem;
+}
+
+.timing-labels p {
+  position: absolute;
+
+  top: 0;
+
+  max-width: 13rem;
+
+  margin: 0;
+
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.timing-labels .at-start {
+  left: 8%;
+
+  font-size: 0.85rem;
+
+  color: var(--muted);
+}
+
+.timing-labels .at-late {
+  left: 76%;
+
+  margin-left: -0.2rem;
+}
+
+.timing-labels .at-early {
+  left: 22%;
+
+  margin-left: -0.2rem;
+}
+
+.timing-labels strong {
+  font-weight: 500;
+}
+
+.timing-axis {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding-top: 0.7rem;
+
+  border-top: 1px solid var(--rule);
+
+  font-family: var(--mono);
+
+  font-size: 0.68rem;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: var(--muted);
+}
+
+.timing-close {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(17rem, 1fr));
+
+  gap: 1.6rem clamp(2rem, 5vw, 4rem);
+
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.timing-close p:last-child {
+  max-width: 30rem;
+
+  font-size: 0.95rem;
+
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   MOBIILI
+   ========================================================= */
+
+@media (max-width: 48rem) {
+
+  .chain-step {
+    flex: 1 1 100%;
+
+    padding-left: 0;
+    padding-right: 0;
+
+    border-left: 0;
+  }
+
+  .chain-step--turn {
+    border-top-color: var(--signal);
+  }
+
+  .signal-field {
+    gap: 4px 2px;
+  }
+
+  .signal-field i {
+    height: 20px;
+  }
+
+  .timing-labels {
+    height: auto;
+  }
+
+  .timing-labels p,
+  .timing-labels .at-start,
+  .timing-labels .at-late,
+  .timing-labels .at-early {
+    position: static;
+
+    left: auto;
+
+    max-width: none;
+
+    margin-left: 0;
+  }
+
+  .timing-labels p + p {
+    margin-top: 0.4rem;
+  }
+
+}

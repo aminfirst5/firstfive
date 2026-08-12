@@ -67,6 +67,7 @@
   </script>
 
   <link rel="stylesheet" href="./assets/styles.css?v=20260812-7">
+  <link rel="stylesheet" href="./assets/ffy-visuals.css?v=20260813-1">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -149,31 +150,12 @@
     </a>
 
     <nav class="nav" aria-label="Päävalikko">
-
-      <a href="./#miksi">
-        Miksi
-      </a>
-
-      <a href="./missio.html">
-        Missio
-      </a>
-
-      <a href="./data.html" aria-current="page">
-        Data
-      </a>
-
-      <a href="./#liike">
-        Liike
-      </a>
-
-      <a href="./#kuka">
-        Taustalla
-      </a>
-
-      <a class="nav-cta" href="./#yhteys">
-        Tule mukaan
-      </a>
-
+      <a href="./#miksi">Miksi</a>
+      <a href="./missio.html">Missio</a>
+      <a href="./data.html" aria-current="page">Data</a>
+      <a href="./#liike">Liike</a>
+      <a href="./taustalla.html">Taustalla</a>
+      <a class="nav-cta" href="./#mukaan">Tule mukaan</a>
     </nav>
 
   </div>
@@ -195,22 +177,14 @@
       </p>
 
       <h1>
-        Suomi tietää, pääsikö nuori töihin.
-        Paljon vähemmän tiedämme siitä,
-        mitä sen jälkeen tapahtuu.
+        Suomi mittaa lopputuloksen.
+        <em>Me mittaamme matkan.</em>
       </h1>
 
       <p class="data-lede">
-        Työllistyminen on tärkeä mittari, mutta se kertoo yhdestä
-        hetkestä. Työelämään kiinnittyminen alkaa jo ennen ensimmäistä
-        työpaikkaa ja rakentuu ensimmäisten työvuosien aikana.
-      </p>
-
-      <p class="data-lede">
-        Me kutsumme tätä kestäväksi työelämään kiinnittymiseksi.
-        Rakennamme tapaa mitata sitä: mitä nuori kohtaa matkalla
-        työelämään, mitä tapahtuu ensimmäisinä vuosina ja missä
-        syntyy kitkaa, joka nykyisistä tilastoista jää näkymättä.
+        Työllistyminen kertoo yhdestä hetkestä. Kestävä työelämään
+        kiinnittyminen rakentuu ennen ensimmäistä työpaikkaa ja
+        ensimmäisten työvuosien aikana. Sitä me rakennamme mitattavaksi.
       </p>
 
       <ul class="layer-key" aria-label="Sivun kaksi kerrosta">
@@ -230,7 +204,82 @@
     </header>
 
 
-    <!-- 01 MITTAUSKATVEALUE -->
+    <!-- KANSALLINEN TAVOITE -->
+
+    <section
+      class="data-section"
+      id="strategia"
+      aria-labelledby="strategy-title"
+    >
+
+      <p class="eyebrow">
+        Kansallinen tavoite
+      </p>
+
+      <h2 id="strategy-title">
+        Suomi on jo sanonut sen ääneen.
+      </h2>
+
+
+      <blockquote class="strategy-quote">
+
+        <p>
+          “Nuorten siirtyminen työelämään on nähtävä laajemmin kuin sinä
+          yksittäisenä hetkenä, jolloin nuori työllistyy ensimmäiseen
+          työpaikkaansa. — — Uusien työntekijöiden hyvä vastaanotto,
+          mahdollisuus kehittyä ja käyttää omaa osaamistaan sekä turvallinen
+          työyhteisö auttavat kiinnittymään työelämään.”
+        </p>
+
+        <footer>
+          Työelämän kehittämisstrategia vuoteen 2035,
+          <cite>
+            Valtioneuvoston julkaisuja 2026:44
+          </cite>
+        </footer>
+
+      </blockquote>
+
+
+      <div class="data-body data-body--wide">
+
+        <p>
+          “Nuorille hyvä alku työelämässä” on yksi strategian
+          muutostavoitteista. First Five Years vie saman kysymyksen
+          mittaamiseen. Jos Suomi haluaa olla maailman paras paikka
+          aloittaa työelämä, meidän pitää pystyä näkemään, missä
+          kiinnittyminen onnistuu ja missä syntyy kitkaa.
+        </p>
+
+      </div>
+
+
+      <p class="source-line">
+
+        Lähteet:
+
+        <a
+          href="https://valtioneuvosto.fi/-/1410877/tyoelaman-kehittamisstrategia-kasvua-ihmisten-ideoista-rohkeudesta-uudistua-ja-yhteistyosta"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Valtioneuvosto
+        </a>,
+
+        <a
+          href="https://tem.fi/en/working-life-development-strategy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          työ- ja elinkeinoministeriö
+        </a>.
+
+      </p>
+
+    </section>
+
+
+    <!-- MITTAUSKATVEALUE -->
 
     <section
       class="data-section"
@@ -239,7 +288,6 @@
     >
 
       <p class="eyebrow">
-        <span class="idx">01</span>
         Mittauskatvealue
       </p>
 
@@ -247,13 +295,6 @@
         Nuoren polku on jatkumo.
         Tieto siitä ei ole.
       </h2>
-
-      <p class="data-body">
-        Oppilaitokset, työnantajat ja rekisterit näkevät eri osia
-        samasta matkasta. Suomella ei ole jatkuvaa näkymää siihen,
-        mitä tapahtuu ennen ensimmäistä työpaikkaa ja ensimmäisten
-        työvuosien aikana.
-      </p>
 
 
       <figure class="coverage-figure">
@@ -291,7 +332,7 @@
               </p>
 
               <p class="cov-note">
-                Näkevät erityisesti opiskeluajan ja siirtymän valmistumiseen.
+                Näkevät opiskeluajan ja siirtymän valmistumiseen.
               </p>
 
             </div>
@@ -315,7 +356,7 @@
               </p>
 
               <p class="cov-note">
-                Kertovat esimerkiksi työllisyydestä ja työttömyydestä.
+                Kertovat työllisyydestä ja työttömyydestä.
               </p>
 
             </div>
@@ -339,7 +380,7 @@
               </p>
 
               <p class="cov-note">
-                Tätä näkymää First Five Years rakentaa.
+                Tätä First Five Years rakentaa.
               </p>
 
             </div>
@@ -356,32 +397,11 @@
         </div>
 
         <figcaption>
-          Eri toimijat näkevät nuoren polusta eri vaiheita.
           Puuttuva osa on näkymä koko siirtymään ja ensimmäisiin työvuosiin.
         </figcaption>
 
       </figure>
 
-    </section>
-
-
-    <!-- 02 KAKSI KYSYMYSTÄ -->
-
-    <section
-      class="data-section"
-      id="haarat"
-      aria-labelledby="arms-title"
-    >
-
-      <p class="eyebrow">
-        <span class="idx">02</span>
-        Mitä pitäisi nähdä
-      </p>
-
-      <h2 id="arms-title">
-        Ensin pitää päästä sisään.
-        Sen jälkeen pitäisi päästä kasvamaan.
-      </h2>
 
       <div class="arms">
 
@@ -397,8 +417,7 @@
 
           <p>
             Löytyykö reitti työelämään? Saako hakija palautetta?
-            Ymmärtääkö hän, mitä työ käytännössä on? Kohtaavatko
-            odotukset ja ensimmäisen työn todellisuus?
+            Kohtaavatko odotukset ja ensimmäisen työn todellisuus?
           </p>
 
         </article>
@@ -415,9 +434,8 @@
           </h3>
 
           <p>
-            Pääseekö hän käyttämään osaamistaan, kehittymään ja ottamaan
-            vastuuta? Kokeeko hän olonsa turvalliseksi? Näkeekö hän
-            suunnan eteenpäin?
+            Pääseekö hän käyttämään osaamistaan ja ottamaan vastuuta?
+            Kokeeko hän olonsa turvalliseksi? Näkeekö hän suunnan eteenpäin?
           </p>
 
         </article>
@@ -427,7 +445,7 @@
     </section>
 
 
-    <!-- 03 MITÄ JO TIEDÄMME -->
+    <!-- MITÄ JO TIEDÄMME -->
 
     <section
       class="data-section"
@@ -436,7 +454,6 @@
     >
 
       <p class="eyebrow">
-        <span class="idx">03</span>
         Mitä jo tiedämme
       </p>
 
@@ -455,9 +472,8 @@
         </p>
 
         <p>
-          Nämä luvut kertovat tärkeistä muutoksista.
-          Ne eivät vielä kerro, mitä yksittäisten pisteiden välillä
-          tapahtuu. Siihen First Five Years rakentaa uuden näkymän.
+          Nämä luvut kertovat tärkeistä muutoksista. Ne eivät kerro,
+          mitä pisteiden välillä tapahtuu.
         </p>
 
       </div>
@@ -493,7 +509,7 @@
     </section>
 
 
-    <!-- 04 PILOTTI -->
+    <!-- PILOTTI -->
 
     <section
       class="data-section"
@@ -502,21 +518,12 @@
     >
 
       <p class="eyebrow">
-        <span class="idx">04</span>
         Ensimmäinen pilotti
       </p>
 
       <h2 id="patterns-title">
-        Pilotti osoitti, että työelämän kitka
-        voidaan nähdä ennen kuin se näkyy tilastoissa.
+        Kitka voidaan nähdä ennen tilastoa.
       </h2>
-
-      <p class="data-body">
-        Kahdessa kuukaudessa eri nuorten keskusteluissa alkoi toistua
-        samoja tilanteita. Ne liittyivät esimerkiksi palautteeseen,
-        vastuuseen, oman äänen käyttämiseen ja keskeneräisen työn
-        jakamiseen.
-      </p>
 
       <p class="data-body">
         Yksittäinen keskustelu kertoo yhden nuoren tilanteesta.
@@ -564,8 +571,7 @@
         <p>
           Keskusteluista voidaan tunnistaa toistuvaa työelämän kitkaa
           ilman, että huomio kohdistuu yksittäiseen ihmiseen.
-          Pilotti osoitti, että tällainen signaali voidaan tehdä
-          näkyväksi. Seuraava vaihe on mitata sen yleisyyttä ja muutosta.
+          Seuraava vaihe on mitata sen yleisyyttä ja muutosta.
         </p>
 
       </div>
@@ -582,7 +588,7 @@
     </section>
 
 
-    <!-- 05 MITTARIKONSEPTI -->
+    <!-- MITTARIKONSEPTI -->
 
     <section
       class="data-section"
@@ -591,7 +597,6 @@
     >
 
       <p class="eyebrow">
-        <span class="idx">05</span>
         Mittarin ensimmäinen hahmotelma
       </p>
 
@@ -601,16 +606,10 @@
       </h2>
 
       <p class="data-body">
-        Alla oleva näkymä havainnollistaa kestävän työelämään
-        kiinnittymisen mittarin mahdollista rakennetta: mitä asioita
-        työelämään kiinnittymisestä voisi seurata ja miltä yhteinen
-        näkymä voisi näyttää.
-      </p>
-
-      <p class="data-body">
-        Kaikki tässä osiossa näkyvät luvut ovat keksittyjä.
-        Mittarin määritelmät, aineisto, vertailukelpoisuus, tietosuoja
-        ja validointi rakennetaan seuraavissa vaiheissa.
+        Alla oleva näkymä havainnollistaa mittarin mahdollista rakennetta.
+        Kaikki luvut ovat keksittyjä. Määritelmät, aineisto,
+        vertailukelpoisuus, tietosuoja ja validointi rakennetaan
+        seuraavissa vaiheissa.
       </p>
 
 
@@ -683,8 +682,8 @@
             </h3>
 
             <p>
-              Jos työelämään kiinnittymistä kuvataan yhdellä indeksillä,
-              sen osatekijät pitää näyttää aina erikseen. Havainnollistus.
+              Jos kiinnittymistä kuvataan yhdellä indeksillä,
+              sen osatekijät pitää näyttää aina erikseen.
             </p>
 
           </figcaption>
@@ -765,434 +764,6 @@
         </figure>
 
 
-        <figure class="chart">
-
-          <figcaption>
-
-            <h3>
-              Pääsy — mitä tapahtuu ennen ensimmäistä paikkaa?
-            </h3>
-
-            <p>
-              Esimerkkejä kysymyksistä, joita siirtymästä voisi
-              seurata työllistymisen rinnalla. Havainnollistus.
-            </p>
-
-          </figcaption>
-
-
-          <div class="bar-chart" id="chart-access">
-
-            <div class="bar-row">
-
-              <div class="bar-label">
-                Ymmärtää, miten hakuprosessissa arvioidaan
-              </div>
-
-              <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 29%"
-                  data-tip="Ymmärtää, miten hakuprosessissa arvioidaan: 29 % (havainnollistus)"
-                ></div>
-              </div>
-
-              <div class="bar-value">
-                29<span class="unit"> %</span>
-              </div>
-
-            </div>
-
-
-            <div class="bar-row">
-
-              <div class="bar-label">
-                Sai palautetta viimeisimmästä hylkäyksestä
-              </div>
-
-              <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 18%"
-                  data-tip="Sai palautetta viimeisimmästä hylkäyksestä: 18 % (havainnollistus)"
-                ></div>
-              </div>
-
-              <div class="bar-value">
-                18<span class="unit"> %</span>
-              </div>
-
-            </div>
-
-
-            <div class="bar-row">
-
-              <div class="bar-label">
-                Tiesi ennalta, mitä alan työ käytännössä on
-              </div>
-
-              <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 37%"
-                  data-tip="Tiesi ennalta, mitä alan työ käytännössä on: 37 % (havainnollistus)"
-                ></div>
-              </div>
-
-              <div class="bar-value">
-                37<span class="unit"> %</span>
-              </div>
-
-            </div>
-
-
-            <div class="bar-row">
-
-              <div class="bar-label">
-                Odotukset vastasivat ensimmäistä työpaikkaa
-              </div>
-
-              <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 41%"
-                  data-tip="Odotukset vastasivat ensimmäistä työpaikkaa: 41 % (havainnollistus)"
-                ></div>
-              </div>
-
-              <div class="bar-value">
-                41<span class="unit"> %</span>
-              </div>
-
-            </div>
-
-
-            <div class="bar-row">
-
-              <div class="bar-label">
-                Löysi oman alan työtä kuudessa kuukaudessa
-              </div>
-
-              <div class="bar-track">
-                <div
-                  class="bar-fill"
-                  style="width: 62%"
-                  data-tip="Löysi oman alan työtä kuudessa kuukaudessa: 62 % (havainnollistus)"
-                ></div>
-              </div>
-
-              <div class="bar-value">
-                62<span class="unit"> %</span>
-              </div>
-
-            </div>
-
-
-            <div class="bar-axis" aria-hidden="true">
-              <div class="bar-axis__ticks">
-                <span>0</span>
-                <span>50</span>
-                <span>100 %</span>
-              </div>
-            </div>
-
-          </div>
-
-        </figure>
-
-
-        <figure class="chart">
-
-          <figcaption>
-
-            <h3>
-              Kiinnittyminen — kuinka yleistä työelämän kitka on?
-            </h3>
-
-            <p>
-              Pilotti tunnisti toistuvia ilmiöitä. Seuraavassa vaiheessa
-              voidaan mitata, kuinka yleisiä ne ovat laajemmassa aineistossa.
-              Alla olevat luvut ovat havainnollistuksia.
-            </p>
-
-          </figcaption>
-
-
-          <div class="bar-chart" id="chart-prevalence">
-
-            <div class="bar-row">
-              <div class="bar-label">Jälkikäteen kelaaminen</div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width: 78.33%" data-tip="47 % (havainnollistus)"></div>
-              </div>
-              <div class="bar-value">47<span class="unit"> %</span></div>
-            </div>
-
-            <div class="bar-row">
-              <div class="bar-label">Palautteen välttäminen</div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width: 73.33%" data-tip="44 % (havainnollistus)"></div>
-              </div>
-              <div class="bar-value">44<span class="unit"> %</span></div>
-            </div>
-
-            <div class="bar-row">
-              <div class="bar-label">Epäselvä vastuu</div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width: 68.33%" data-tip="41 % (havainnollistus)"></div>
-              </div>
-              <div class="bar-value">41<span class="unit"> %</span></div>
-            </div>
-
-            <div class="bar-row">
-              <div class="bar-label">Täydellisyyden lamaannus</div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width: 63.33%" data-tip="38 % (havainnollistus)"></div>
-              </div>
-              <div class="bar-value">38<span class="unit"> %</span></div>
-            </div>
-
-            <div class="bar-row">
-              <div class="bar-label">Puheenvuoro jää ottamatta</div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width: 60%" data-tip="36 % (havainnollistus)"></div>
-              </div>
-              <div class="bar-value">36<span class="unit"> %</span></div>
-            </div>
-
-            <div class="bar-row">
-              <div class="bar-label">Auktoriteettiherkkyys</div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width: 55%" data-tip="33 % (havainnollistus)"></div>
-              </div>
-              <div class="bar-value">33<span class="unit"> %</span></div>
-            </div>
-
-            <div class="bar-row">
-              <div class="bar-label">Välittämisen ylikuorma</div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width: 48.33%" data-tip="29 % (havainnollistus)"></div>
-              </div>
-              <div class="bar-value">29<span class="unit"> %</span></div>
-            </div>
-
-            <div class="bar-row">
-              <div class="bar-label">Yliselittäminen</div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width: 43.33%" data-tip="26 % (havainnollistus)"></div>
-              </div>
-              <div class="bar-value">26<span class="unit"> %</span></div>
-            </div>
-
-            <div class="bar-row">
-              <div class="bar-label">Myöhäinen jakaminen</div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width: 40%" data-tip="24 % (havainnollistus)"></div>
-              </div>
-              <div class="bar-value">24<span class="unit"> %</span></div>
-            </div>
-
-            <div class="bar-row">
-              <div class="bar-label">Tiimin hiljaisuus</div>
-              <div class="bar-track">
-                <div class="bar-fill" style="width: 31.67%" data-tip="19 % (havainnollistus)"></div>
-              </div>
-              <div class="bar-value">19<span class="unit"> %</span></div>
-            </div>
-
-
-            <div class="bar-axis" aria-hidden="true">
-              <div class="bar-axis__ticks">
-                <span>0</span>
-                <span>30</span>
-                <span>60 %</span>
-              </div>
-            </div>
-
-          </div>
-
-        </figure>
-
-
-        <figure class="chart">
-
-          <figcaption>
-
-            <h3>
-              Muuttuuko kitka työvuosien aikana?
-            </h3>
-
-            <p>
-              Yksi tulevan mittauksen kysymyksistä on, painottuvatko
-              tietyt ilmiöt työuran ensimmäisiin kuukausiin vai
-              jatkuvatko ne pidemmälle. Havainnollistus.
-            </p>
-
-          </figcaption>
-
-
-          <div class="col-chart" id="chart-tenure">
-
-            <div class="col-slot">
-
-              <div class="col-track">
-                <div class="col-bar" style="height: 86.67%">
-
-                  <span class="col-value">
-                    52<span class="unit"> %</span>
-                  </span>
-
-                  <span
-                    class="col-fill col-o1"
-                    data-tip="0–6 kk: 52 % (havainnollistus)"
-                  ></span>
-
-                </div>
-              </div>
-
-              <div class="col-label">
-                0–6 kk
-              </div>
-
-            </div>
-
-
-            <div class="col-slot">
-
-              <div class="col-track">
-                <div class="col-bar" style="height: 68.33%">
-
-                  <span class="col-value">
-                    41<span class="unit"> %</span>
-                  </span>
-
-                  <span
-                    class="col-fill col-o2"
-                    data-tip="6–24 kk: 41 % (havainnollistus)"
-                  ></span>
-
-                </div>
-              </div>
-
-              <div class="col-label">
-                6–24 kk
-              </div>
-
-            </div>
-
-
-            <div class="col-slot">
-
-              <div class="col-track">
-                <div class="col-bar" style="height: 46.67%">
-
-                  <span class="col-value">
-                    28<span class="unit"> %</span>
-                  </span>
-
-                  <span
-                    class="col-fill col-o3"
-                    data-tip="2–5 v: 28 % (havainnollistus)"
-                  ></span>
-
-                </div>
-              </div>
-
-              <div class="col-label">
-                2–5 v
-              </div>
-
-            </div>
-
-          </div>
-
-        </figure>
-
-
-        <figure class="chart">
-
-          <figcaption>
-
-            <h3>
-              Signaali ja mittari eivät ole sama asia
-            </h3>
-
-            <p>
-              Nopea näkymä auttaa huomaamaan muutoksen.
-              Päätöksenteossa käytettävä mittari vaatii vakaat
-              määritelmät, riittävän aineiston ja arvioidun menetelmän.
-              Havainnollistus.
-            </p>
-
-          </figcaption>
-
-
-          <div class="line-chart" id="chart-trend">
-
-            <div class="line-y" aria-hidden="true">
-              <span class="y-tick" style="top: 0%">60 %</span>
-              <span class="y-tick" style="top: 33.33%">40</span>
-              <span class="y-tick" style="top: 66.67%">20</span>
-              <span class="y-tick" style="top: 100%">0</span>
-            </div>
-
-
-            <div class="line-plot">
-
-              <svg
-                viewBox="0 0 700 200"
-                role="img"
-                aria-label="Havainnollistus mahdollisen signaalin muutoksesta neljännesvuosittain."
-              >
-
-                <g class="line-grid" aria-hidden="true">
-                  <line x1="0" y1="200" x2="700" y2="200" />
-                  <line x1="0" y1="133.3" x2="700" y2="133.3" />
-                  <line x1="0" y1="66.7" x2="700" y2="66.7" />
-                  <line x1="0" y1="0" x2="700" y2="0" />
-                </g>
-
-                <path
-                  class="line-mark"
-                  d="M8.0,96.7 L105.7,90.0 L203.4,93.3 L301.1,80.0 L398.9,73.3 L496.6,76.7 L594.3,63.3 L692.0,56.7"
-                />
-
-                <g class="line-dots">
-                  <circle cx="8.0" cy="96.7" r="4" data-tip="Q1/27: 31 % (havainnollistus)" />
-                  <circle cx="105.7" cy="90.0" r="4" data-tip="Q2/27: 33 % (havainnollistus)" />
-                  <circle cx="203.4" cy="93.3" r="4" data-tip="Q3/27: 32 % (havainnollistus)" />
-                  <circle cx="301.1" cy="80.0" r="4" data-tip="Q4/27: 36 % (havainnollistus)" />
-                  <circle cx="398.9" cy="73.3" r="4" data-tip="Q1/28: 38 % (havainnollistus)" />
-                  <circle cx="496.6" cy="76.7" r="4" data-tip="Q2/28: 37 % (havainnollistus)" />
-                  <circle cx="594.3" cy="63.3" r="4" data-tip="Q3/28: 41 % (havainnollistus)" />
-                  <circle cx="692.0" cy="56.7" r="5.5" data-tip="Q4/28: 43 % (havainnollistus)" />
-                </g>
-
-              </svg>
-
-              <span class="line-endlabel" style="top: 28.33%">
-                43 %
-              </span>
-
-            </div>
-
-
-            <div class="line-x" aria-hidden="true">
-              <span class="x-tick" style="left: 1.14%">Q1/27</span>
-              <span class="x-tick" style="left: 15.10%">Q2/27</span>
-              <span class="x-tick" style="left: 29.06%">Q3/27</span>
-              <span class="x-tick" style="left: 43.02%">Q4/27</span>
-              <span class="x-tick" style="left: 56.98%">Q1/28</span>
-              <span class="x-tick" style="left: 70.94%">Q2/28</span>
-              <span class="x-tick" style="left: 84.90%">Q3/28</span>
-              <span class="x-tick" style="left: 98.86%">Q4/28</span>
-            </div>
-
-          </div>
-
-        </figure>
-
-
         <div class="speeds">
 
           <div class="speed">
@@ -1203,8 +774,7 @@
 
             <p>
               Nopea näkymä siihen, mikä näyttää muuttuvan.
-              Sen tehtävä on nostaa ilmiö näkyväksi ja ohjata
-              tarkempaa tutkimusta.
+              Nostaa ilmiön näkyväksi ja ohjaa tarkempaa tutkimusta.
             </p>
 
           </div>
@@ -1256,7 +826,7 @@
     </section>
 
 
-    <!-- 06 VAIHEET -->
+    <!-- VAIHEET -->
 
     <section
       class="data-section"
@@ -1265,19 +835,12 @@
     >
 
       <p class="eyebrow">
-        <span class="idx">06</span>
         Kolme vaihetta
       </p>
 
       <h2 id="phases-title">
         Näin rakennamme kansallisen mittarin.
       </h2>
-
-      <p class="data-body">
-        Kansallinen näkymä rakennetaan vaiheittain. Aloitamme ryhmästä,
-        jossa menetelmää voidaan testata hallitusti, ja laajennamme
-        mittausta erilaisiin koulutuspolkuihin ja elämäntilanteisiin.
-      </p>
 
 
       <ol class="phase-list">
@@ -1289,9 +852,8 @@
           </h3>
 
           <p>
-            Aloitamme rajatusta ryhmästä, jossa siirtymää voidaan
-            seurata hallittavasti ja menetelmää testata.
-            Tässä vaiheessa rakennetaan ensimmäinen toimiva mittausmalli.
+            Rajattu ryhmä, jossa siirtymää voidaan seurata hallittavasti
+            ja menetelmää testata. Ensimmäinen toimiva mittausmalli.
           </p>
 
         </li>
@@ -1304,10 +866,9 @@
           </h3>
 
           <p>
-            Työelämään siirtyminen näyttää erilaiselta eri
-            koulutuspoluilla. Ammatillisessa koulutuksessa työelämä
-            voi alkaa jo opintojen aikana. Mittausmalli laajennetaan
-            toimimaan myös näissä siirtymissä.
+            Ammatillisessa koulutuksessa työelämä voi alkaa jo opintojen
+            aikana. Mittausmalli laajennetaan toimimaan myös näissä
+            siirtymissä.
           </p>
 
         </li>
@@ -1320,124 +881,20 @@
           </h3>
 
           <p>
-            Kansallinen mittari tarvitsee mukaan myös nuoret, joita
-            ei tavoiteta oppilaitosten tai työnantajien kautta.
-            Kolmannessa vaiheessa rakennetaan tapa tuoda myös nämä
-            kokemukset osaksi yhteistä näkymää.
+            Kansallinen mittari tarvitsee mukaan myös nuoret, joita ei
+            tavoiteta oppilaitosten tai työnantajien kautta.
           </p>
 
         </li>
 
       </ol>
 
-
-      <p class="phase-close">
-        Näin rakennamme kansallisen mittarin: vaiheittain, kunnes mukana
-        ovat eri koulutuspolut, elämäntilanteet ja nuorten erilaiset
-        reitit työelämään.
-      </p>
-
-    </section>
-
-
-    <!-- 07 STRATEGIA -->
-
-    <section
-      class="data-section"
-      id="strategia"
-      aria-labelledby="strategy-title"
-    >
-
-      <p class="eyebrow">
-        <span class="idx">07</span>
-        Kansallinen tavoite
-      </p>
-
-      <h2 id="strategy-title">
-        Suomikin on jo tunnistanut,
-        ettei hyvä alku tarkoita vain ensimmäistä työpaikkaa.
-      </h2>
-
-
-      <blockquote class="strategy-quote">
-
-        <p>
-          “Nuorten siirtyminen työelämään on nähtävä laajemmin kuin sinä
-          yksittäisenä hetkenä, jolloin nuori työllistyy ensimmäiseen
-          työpaikkaansa. — — Uusien työntekijöiden hyvä vastaanotto,
-          mahdollisuus kehittyä ja käyttää omaa osaamistaan sekä turvallinen
-          työyhteisö auttavat kiinnittymään työelämään.”
-        </p>
-
-        <footer>
-          Työelämän kehittämisstrategia vuoteen 2035,
-          <cite>
-            Valtioneuvoston julkaisuja 2026:44
-          </cite>
-        </footer>
-
-      </blockquote>
-
-
-      <div class="data-body data-body--wide">
-
-        <p>
-          “Nuorille hyvä alku työelämässä” on yksi strategian
-          muutostavoitteista. First Five Years vie saman kysymyksen
-          mittaamiseen: miten hyvä alku tehdään näkyväksi ennen
-          ensimmäistä työpaikkaa ja ensimmäisten työvuosien aikana?
-        </p>
-
-        <p>
-          Siksi rakennamme kestävän työelämään kiinnittymisen mittaria.
-          Sen määritelmä, aineisto ja menetelmä kehitetään ja validoidaan
-          tutkimuksen ja käytännön kokeilujen kautta.
-        </p>
-
-        <p>
-          Jos Suomi haluaa olla maailman paras paikka aloittaa työelämä,
-          meidän pitää pystyä näkemään, missä työelämään kiinnittyminen
-          onnistuu ja missä syntyy kitkaa.
-        </p>
-
-        <p>
-          Mittari rakennetaan yhdessä nuorten, tutkijoiden, työnantajien
-          ja julkisen sektorin kanssa. Tavoitteena on kansallinen väline,
-          joka auttaa Suomea ymmärtämään työelämän ensimmäisiä vuosia
-          ja kehittämään niitä tiedon pohjalta.
-        </p>
-
-      </div>
-
-
-      <p class="source-line">
-
-        Lähteet:
-
-        <a
-          href="https://valtioneuvosto.fi/-/1410877/tyoelaman-kehittamisstrategia-kasvua-ihmisten-ideoista-rohkeudesta-uudistua-ja-yhteistyosta"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Valtioneuvosto
-        </a>,
-
-        <a
-          href="https://tem.fi/en/working-life-development-strategy"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          työ- ja elinkeinoministeriö
-        </a>.
-
-      </p>
-
     </section>
 
 
     <p class="back-link">
-      <a class="textlink" href="./#yhteys">
-        Tule mukaan rakentamaan →
+      <a class="textlink" href="./#mukaan">
+        Neljä tapaa olla mukana →
       </a>
     </p>
 
@@ -1466,37 +923,19 @@
     </div>
 
 
-    <nav
-      class="footer-nav"
-      aria-label="Alatunniste"
-    >
+    <nav class="footer-nav" aria-label="Alatunniste">
 
-      <a href="./#miksi">
-        Miksi
-      </a>
+      <a href="./#miksi">Miksi</a>
 
-      <a href="./missio.html">
-        Missio
-      </a>
+      <a href="./missio.html">Missio</a>
 
-      <a
-        href="./data.html"
-        aria-current="page"
-      >
-        Data
-      </a>
+      <a href="./data.html" aria-current="page">Data</a>
 
-      <a href="./#liike">
-        Liike
-      </a>
+      <a href="./#liike">Liike</a>
 
-      <a href="./#kuka">
-        Taustalla
-      </a>
+      <a href="./taustalla.html">Taustalla</a>
 
-      <a href="./#yhteys">
-        Tule mukaan
-      </a>
+      <a href="./#mukaan">Tule mukaan</a>
 
     </nav>
 
@@ -1559,34 +998,15 @@
 
       el.setAttribute("tabindex", "0");
 
-      el.addEventListener(
-        "mouseenter",
-        () => show(el)
-      );
-
-      el.addEventListener(
-        "focus",
-        () => show(el)
-      );
-
-      el.addEventListener(
-        "mouseleave",
-        hide
-      );
-
-      el.addEventListener(
-        "blur",
-        hide
-      );
+      el.addEventListener("mouseenter", () => show(el));
+      el.addEventListener("focus", () => show(el));
+      el.addEventListener("mouseleave", hide);
+      el.addEventListener("blur", hide);
 
     });
 
 
-  window.addEventListener(
-    "scroll",
-    hide,
-    { passive: true }
-  );
+  window.addEventListener("scroll", hide, { passive: true });
 
 })();
 </script>
